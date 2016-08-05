@@ -644,7 +644,7 @@ Public Class Frm_EquipmentManagement
                 MetroMessageBox.Show(Me, "Delete Complete!", "Delete")
                 MySQLConn.Close()
                 MySQLConn.Open()
-                Query = "INSERT INTO systemlog VALUES(@datetoday, 'DELETE', @deviceserial, 'NONE', @username, @equipmentnumber, @equipmentname, @equipmentmodel, @equipmentserial, @equipmentlocation, @equipmentowner, @equipmentdatepurchase, @equipmentprice, @equipmentbranch, @maintenancesched)"
+                Query = "INSERT INTO systemlog VALUES(@datetoday, 'DELETE', @deviceserial, 'NONE', @username, @equipmentnumber, @equipmentname, @equipmentmodel, @equipmentserial, @equipmentlocation, @equipmentowner, @equipmentdatepurchase, @equipmentprice, @equipmentbranch, @maintenancesched, @personincharge)"
                 comm = New MySqlCommand(Query, MySQLConn)
                 comm.Parameters.AddWithValue("datetoday", Date.Now.ToString("yyyy/MM/dd"))
                 comm.Parameters.AddWithValue("deviceserial", txt_serial_no.Text)
@@ -659,6 +659,7 @@ Public Class Frm_EquipmentManagement
                 comm.Parameters.AddWithValue("equipmentprice", tempprice)
                 comm.Parameters.AddWithValue("equipmentbranch", tempbranch)
                 comm.Parameters.AddWithValue("maintenancesched", tempmaintenancesched)
+                comm.Parameters.AddWithValue("personincharge", txt_personincharge.Text)
                 reader = comm.ExecuteReader
                 MySQLConn.Close()
                 MsgBox("Log Saved")
