@@ -8,7 +8,7 @@ Public Class Frm_Login
     Private Sub MetroButton1_Click(ByVal sender As Object, ByVal e As EventArgs) Handles MetroButton1.Click
 
         If txtbox_username.Text = "" Then
-            'MetroMessageBox.Show(Me, "Please put a username!", "CEU TLTD Preventive Maintenance System", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
         ElseIf txtbox_username.Text.Contains("@ceu.edu.ph") Then
 
         Else
@@ -36,7 +36,6 @@ Public Class Frm_Login
                 usertype = reader.GetString("usertype")
             End While
             If count >= 1 Then
-                'MsgBox("Welcome " & activeuserfname & " " & activeuserlname & "!", MsgBoxStyle.Information, "MIAD Preventive Maintenance System")
                 MetroMessageBox.Show(Me, "Welcome " & activeuserfname & " " & activeuserlname & "!", "CEU TLTD Preventive Maintenance System", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Me.Hide()
                 Frm_Main.Show()
@@ -50,7 +49,12 @@ Public Class Frm_Login
                 txtbox_username.Focus()
             End If
             MySQLConn.Close()
-
+            MySQLConn.Open()
+            query = "INSERT INTO accountactivity(username) VALUES(@username)"
+            comm = New MySqlCommand(query, MySQLConn)
+            comm.Parameters.AddWithValue("username", username)
+            reader = comm.ExecuteReader
+            MySQLConn.Close()
         Catch ex As Exception
             MsgBox("MySql error" & ex.Message)
         Finally

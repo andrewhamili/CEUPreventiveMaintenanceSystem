@@ -17,6 +17,12 @@ Public Class Device
         ServiceCard.ShowDialog()
     End Sub
 
+    Private Sub Device_FormClosing(sender As Object, e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
+        Me.Dispose()
+        Frm_Main.ShowInTaskbar = True
+        Frm_Main.Focus()
+    End Sub
+
     Private Sub Device_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Maintenance_Log()
         info_equipnum.Text = equipnum
@@ -124,6 +130,12 @@ Public Class Device
                     MsgBox(ex.Message)
                 End Try
             End If
+        End If
+    End Sub
+
+    Private Sub Timer1_Tick(sender As System.Object, e As System.EventArgs) Handles Timer1.Tick
+        If Me.WindowState = FormWindowState.Minimized Then
+            Me.WindowState = FormWindowState.Normal
         End If
     End Sub
 End Class

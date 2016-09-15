@@ -33,6 +33,7 @@ Public Class Frm_Main
     Private Sub Frm_Main_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         MetroLabel1.Text = "Welcome, " & activeuserfname & " " & activeuserlname & "!"
         load_table()
+        lbl_server.Text = "Server: " + My.Settings.Server
 
     End Sub
 
@@ -55,7 +56,7 @@ Public Class Frm_Main
     End Sub
 
     Public Sub load_table()
-        
+
 
         main_datagrid.Columns.Clear()
         If MySQLConn.State = ConnectionState.Open Then
@@ -65,11 +66,11 @@ Public Class Frm_Main
         Dim adapter As New MySqlDataAdapter
         Dim bsource As New BindingSource
         Dim query As String
-
+        Dim equipmentserial As DataGridViewRow
         Try
 
             MySQLConn.Open()
-            query = "SELECT equipmentnumber as 'EquipmentNumber', equipmentname as 'EquipmentName', equipmentmodel as 'Equipment Model', equipmentserial as 'SerialNumber', equipmentlocation as 'Location', equipmentdatepurchase as 'Date purchased', format(equipmentprice, 2) as 'Price', equipmentbranch as 'Branch', maintenancesched as 'Maintenance Schedule', personincharge as 'Person in Charge' FROM equipmentlist ORDER BY dateadded DESC"
+            query = "SELECT equipmentnumber as 'EquipmentNumber', equipmentname as 'EquipmentName', equipmentmodel as 'Equipment Model', equipmentserial as 'SerialNumber', equipmentlocation as 'Location', equipmentdatepurchase as 'Date purchased', format(equipmentprice, 2) as 'Price', equipmentbranch as 'Branch', maintenancesched as 'Maintenance Schedule', personincharge as 'Person in Charge', remarks as 'Status' FROM equipmentlist ORDER BY dateadded DESC"
             comm = New MySqlCommand(query, MySQLConn)
             adapter.SelectCommand = comm
             adapter.Fill(dbdataset)

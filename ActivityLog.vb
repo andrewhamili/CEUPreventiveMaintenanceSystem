@@ -2,6 +2,10 @@
 
 Public Class ActivityLog
 
+    Private Sub ActivityLog_FormClosing(sender As Object, e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
+        Me.Dispose()
+    End Sub
+
     Private Sub ActivityLog_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         If MySQLConn.State = ConnectionState.Open Then
             MySQLConn.Close()

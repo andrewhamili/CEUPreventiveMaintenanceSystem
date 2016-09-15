@@ -11,6 +11,10 @@ Public Class Frm_Accounts
 
     Public editing As Boolean = False
 
+    Private Sub Frm_Accounts_FormClosing(sender As Object, e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
+        Me.Dispose()
+    End Sub
+
 
     Private Sub Frm_Accounts_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         btn_update.Enabled = False
@@ -43,7 +47,7 @@ Public Class Frm_Accounts
             MySQLConn.ConnectionString = connstring
 
             If tf_password.Text = tf_retypepass.Text Then
-                If tf_fname.Text = "" Or tf_lname.Text = "" Or tf_username.Text = "" Or tf_password.Text = "" Or tf_retypepass.Text = "" Then
+                If tf_fname.Text = "" Or tf_lname.Text = "" Or tf_username.Text = "" Or tf_password.Text = "" Or tf_retypepass.Text = "" Or cb_usertype.Text = "" Then
                     MetroMessageBox.Show(Me, "All fields with an astrisk (*) is required to be filled-up", "CEU TLTD Preventive Maintenance System", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                 Else
                     Try
@@ -228,7 +232,6 @@ Public Class Frm_Accounts
 
     Private Sub btn_mlclose_Click(sender As Object, e As EventArgs) Handles btn_mlclose.Click
         Me.Dispose()
-
     End Sub
     Private Sub btn_mlminimize_Click(ByVal sender As Object, ByVal e As EventArgs)
         Me.WindowState = FormWindowState.Minimized
@@ -297,5 +300,9 @@ Public Class Frm_Accounts
             MsgBox(ex.Message)
 
         End Try
+    End Sub
+
+    Private Sub Button1_Click(sender As System.Object, e As System.EventArgs) Handles Button1.Click
+        AccountActivity.ShowDialog()
     End Sub
 End Class

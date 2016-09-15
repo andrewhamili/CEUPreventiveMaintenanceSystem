@@ -44,6 +44,7 @@ Partial Class Frm_Accounts
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.lb_useraccounts = New System.Windows.Forms.ListBox()
         Me.btn_delete = New MetroFramework.Controls.MetroButton()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.btn_mlclose = New MetroFramework.Controls.MetroLink()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -91,7 +92,7 @@ Partial Class Frm_Accounts
         Me.lbl_pass1.AutoSize = True
         Me.lbl_pass1.Location = New System.Drawing.Point(106, 78)
         Me.lbl_pass1.Name = "lbl_pass1"
-        Me.lbl_pass1.Size = New System.Drawing.Size(73, 19)
+        Me.lbl_pass1.Size = New System.Drawing.Size(72, 19)
         Me.lbl_pass1.TabIndex = 6
         Me.lbl_pass1.Text = "Password:*"
         '
@@ -100,7 +101,7 @@ Partial Class Frm_Accounts
         Me.lbl_reppass1.AutoSize = True
         Me.lbl_reppass1.Location = New System.Drawing.Point(54, 103)
         Me.lbl_reppass1.Name = "lbl_reppass1"
-        Me.lbl_reppass1.Size = New System.Drawing.Size(126, 19)
+        Me.lbl_reppass1.Size = New System.Drawing.Size(124, 19)
         Me.lbl_reppass1.TabIndex = 13
         Me.lbl_reppass1.Text = "Re-Type Password:*"
         '
@@ -195,7 +196,7 @@ Partial Class Frm_Accounts
         Me.MetroLabel3.AutoSize = True
         Me.MetroLabel3.Location = New System.Drawing.Point(108, 22)
         Me.MetroLabel3.Name = "MetroLabel3"
-        Me.MetroLabel3.Size = New System.Drawing.Size(69, 19)
+        Me.MetroLabel3.Size = New System.Drawing.Size(70, 19)
         Me.MetroLabel3.TabIndex = 5
         Me.MetroLabel3.Text = "Usertype:*"
         '
@@ -244,6 +245,15 @@ Partial Class Frm_Accounts
         Me.btn_delete.Text = "Delete"
         Me.btn_delete.UseSelectable = True
         '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(535, 361)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(99, 38)
+        Me.Button1.TabIndex = 28
+        Me.Button1.Text = "Last Log-in"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
         'btn_mlclose
         '
         Me.btn_mlclose.Image = Global.CEUPreventiveMaintenanceSystem.My.Resources.Resources.power_1
@@ -261,6 +271,7 @@ Partial Class Frm_Accounts
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(657, 407)
         Me.ControlBox = False
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.btn_mlclose)
         Me.Controls.Add(Me.btn_delete)
         Me.Controls.Add(Me.GroupBox3)
@@ -283,12 +294,6 @@ Partial Class Frm_Accounts
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents lbl_fname1 As MetroFramework.Controls.MetroLabel
-    Friend WithEvents lbl_mname1 As MetroFramework.Controls.MetroLabel
-    Friend WithEvents MetroLabel2 As MetroFramework.Controls.MetroLabel
-    Friend WithEvents lbl_username1 As MetroFramework.Controls.MetroLabel
-    Friend WithEvents lbl_pass1 As MetroFramework.Controls.MetroLabel
-    Friend WithEvents lbl_reppass1 As MetroFramework.Controls.MetroLabel
     Friend WithEvents tf_fname As System.Windows.Forms.TextBox
     Friend WithEvents tf_mname As System.Windows.Forms.TextBox
     Friend WithEvents tf_lname As System.Windows.Forms.TextBox
@@ -297,12 +302,19 @@ Partial Class Frm_Accounts
     Friend WithEvents tf_password As System.Windows.Forms.TextBox
     Friend WithEvents tf_retypepass As System.Windows.Forms.TextBox
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
-    Friend WithEvents btn_update As MetroFramework.Controls.MetroButton
-    Friend WithEvents btn_save As MetroFramework.Controls.MetroButton
     Friend WithEvents GroupBox3 As GroupBox
-    Friend WithEvents MetroLabel3 As MetroFramework.Controls.MetroLabel
     Friend WithEvents cb_usertype As System.Windows.Forms.ComboBox
     Friend WithEvents lb_useraccounts As ListBox
-    Friend WithEvents btn_delete As MetroFramework.Controls.MetroButton
-    Friend WithEvents btn_mlclose As MetroFramework.Controls.MetroLink
+    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Private WithEvents lbl_fname1 As MetroFramework.Controls.MetroLabel
+    Private WithEvents lbl_mname1 As MetroFramework.Controls.MetroLabel
+    Private WithEvents MetroLabel2 As MetroFramework.Controls.MetroLabel
+    Private WithEvents lbl_username1 As MetroFramework.Controls.MetroLabel
+    Private WithEvents lbl_pass1 As MetroFramework.Controls.MetroLabel
+    Private WithEvents lbl_reppass1 As MetroFramework.Controls.MetroLabel
+    Private WithEvents btn_update As MetroFramework.Controls.MetroButton
+    Private WithEvents btn_save As MetroFramework.Controls.MetroButton
+    Private WithEvents MetroLabel3 As MetroFramework.Controls.MetroLabel
+    Private WithEvents btn_delete As MetroFramework.Controls.MetroButton
+    Private WithEvents btn_mlclose As MetroFramework.Controls.MetroLink
 End Class

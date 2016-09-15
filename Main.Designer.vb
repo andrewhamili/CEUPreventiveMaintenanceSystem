@@ -55,6 +55,7 @@ Partial Class Frm_Main
         Me.MetroLabel7 = New MetroFramework.Controls.MetroLabel()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.btn_mlminimize = New MetroFramework.Controls.MetroLink()
+        Me.lbl_server = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         CType(Me.main_datagrid, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox3.SuspendLayout()
@@ -319,7 +320,7 @@ Partial Class Frm_Main
         Me.MetroLabel7.AutoSize = True
         Me.MetroLabel7.Location = New System.Drawing.Point(245, 121)
         Me.MetroLabel7.Name = "MetroLabel7"
-        Me.MetroLabel7.Size = New System.Drawing.Size(269, 19)
+        Me.MetroLabel7.Size = New System.Drawing.Size(268, 19)
         Me.MetroLabel7.TabIndex = 9
         Me.MetroLabel7.Text = "To add a Service Card, double-click an item."
         '
@@ -344,6 +345,16 @@ Partial Class Frm_Main
         Me.btn_mlminimize.TabIndex = 40
         Me.btn_mlminimize.UseSelectable = True
         '
+        'lbl_server
+        '
+        Me.lbl_server.AutoSize = True
+        Me.lbl_server.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!)
+        Me.lbl_server.Location = New System.Drawing.Point(24, 40)
+        Me.lbl_server.Name = "lbl_server"
+        Me.lbl_server.Size = New System.Drawing.Size(71, 18)
+        Me.lbl_server.TabIndex = 42
+        Me.lbl_server.Text = "lbl_server"
+        '
         'Frm_Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -351,6 +362,7 @@ Partial Class Frm_Main
         Me.BorderStyle = MetroFramework.Forms.MetroFormBorderStyle.FixedSingle
         Me.ClientSize = New System.Drawing.Size(1318, 629)
         Me.ControlBox = False
+        Me.Controls.Add(Me.lbl_server)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.btn_mlminimize)
         Me.Controls.Add(Me.MetroButton4)
@@ -377,24 +389,13 @@ Partial Class Frm_Main
 
     End Sub
 
-    Friend WithEvents MetroLabel1 As MetroFramework.Controls.MetroLabel
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents main_datagrid As MetroFramework.Controls.MetroGrid
     Friend WithEvents GroupBox3 As GroupBox
-    Friend WithEvents MetroLabel4 As MetroFramework.Controls.MetroLabel
-    Friend WithEvents MetroLabel3 As MetroFramework.Controls.MetroLabel
-    Friend WithEvents MetroLabel2 As MetroFramework.Controls.MetroLabel
     Friend WithEvents TextBox3 As TextBox
     Friend WithEvents TextBox2 As TextBox
     Friend WithEvents TextBox1 As TextBox
-    Friend WithEvents MetroLabel5 As MetroFramework.Controls.MetroLabel
-    Friend WithEvents MetroLabel6 As MetroFramework.Controls.MetroLabel
     Friend WithEvents ComboBox1 As ComboBox
-    Friend WithEvents btn_accountmanagement As MetroFramework.Controls.MetroButton
-    Friend WithEvents btn_equipmentmanagement As MetroFramework.Controls.MetroButton
-    Friend WithEvents MetroButton4 As MetroFramework.Controls.MetroButton
-    Friend WithEvents btn_mlminimize As MetroFramework.Controls.MetroLink
-    Friend WithEvents btn_activitylog As MetroFramework.Controls.MetroButton
     Friend WithEvents equipmentnumber As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents equipmentname As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents equipmentmodel As System.Windows.Forms.DataGridViewTextBoxColumn
@@ -403,6 +404,18 @@ Partial Class Frm_Main
     Friend WithEvents equipmentdatepurchase As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents equipmentprice As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents equipmentbranch As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents MetroLabel7 As MetroFramework.Controls.MetroLabel
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
+    Private WithEvents MetroLabel1 As MetroFramework.Controls.MetroLabel
+    Private WithEvents MetroLabel4 As MetroFramework.Controls.MetroLabel
+    Private WithEvents MetroLabel3 As MetroFramework.Controls.MetroLabel
+    Private WithEvents MetroLabel2 As MetroFramework.Controls.MetroLabel
+    Private WithEvents MetroLabel5 As MetroFramework.Controls.MetroLabel
+    Private WithEvents MetroLabel6 As MetroFramework.Controls.MetroLabel
+    Private WithEvents btn_accountmanagement As MetroFramework.Controls.MetroButton
+    Private WithEvents btn_equipmentmanagement As MetroFramework.Controls.MetroButton
+    Private WithEvents MetroButton4 As MetroFramework.Controls.MetroButton
+    Private WithEvents btn_mlminimize As MetroFramework.Controls.MetroLink
+    Private WithEvents btn_activitylog As MetroFramework.Controls.MetroButton
+    Private WithEvents MetroLabel7 As MetroFramework.Controls.MetroLabel
+    Friend WithEvents lbl_server As System.Windows.Forms.Label
 End Class

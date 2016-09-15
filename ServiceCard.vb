@@ -46,7 +46,7 @@ Public Class ServiceCard
 
             Try
                 MySQLConn.Open()
-                query = "INSERT INTO maintenance values(@date, @remarks, @servicetype, @prevmaintenance, @cost, @servicedby, @deviceserial)"
+            query = "INSERT INTO maintenance VALUES(@date, @remarks, @servicetype, @prevmaintenance, @cost, @servicedby, @deviceserial);UPDATE equipmentlist set remarks=@remarks WHERE equipmentserial=@deviceserial;"
                 comm = New MySqlCommand(query, MySQLConn)
                 comm.Parameters.AddWithValue("date", Format(CDate(DateTimePicker.Text), "yyyy/MM/dd"))
                 comm.Parameters.AddWithValue("remarks", txt_remarks.Text)
@@ -56,13 +56,12 @@ Public Class ServiceCard
                 comm.Parameters.AddWithValue("servicedby", txt_username.Text)
                 comm.Parameters.AddWithValue("deviceserial", Device.equipserial)
                 reader = comm.ExecuteReader
-                MySQLConn.Close()
+            MySQLConn.Close()
                 MsgBox("Successfully Saved", MsgBoxStyle.Information, "CEU TLTD Preventive Maintenance System")
             Catch ex As Exception
                 MsgBox(ex.Message)
             Finally
                 MySQLConn.Dispose()
-
             End Try
             Device.Maintenance_Log()
             Me.Dispose()
@@ -92,7 +91,7 @@ Public Class ServiceCard
 
     End Sub
 
-    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+    Private Sub Button1_Click() Handles Button1.Click, MyBase.FormClosing
         Me.Dispose()
     End Sub
 

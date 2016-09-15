@@ -207,7 +207,7 @@ Public Class Frm_EquipmentManagement
                     Else
                         MySQLConn.Close()
                         MySQLConn.Open()
-                        query = "insert into equipmentlist values(@equipmentnumber, @equipmentname, @equipmentmodel, @equipmentserial, @equipmentlocation, @equipmentowner, @equipmentdatepurchase, @equipmentprice, @equipmentbranch, @maintenancesched, @personincharge, @dateadded)"
+                        query = "INSERT INTO equipmentlist(equipmentnumber, equipmentname, equipmentmodel, equipmentserial, equipmentlocation, equipmentowner, equipmentdatepurchase, equipmentprice, equipmentbranch, maintenancesched, personincharge, dateadded) VALUES(@equipmentnumber, @equipmentname, @equipmentmodel, @equipmentserial, @equipmentlocation, @equipmentowner, @equipmentdatepurchase, @equipmentprice, @equipmentbranch, @maintenancesched, @personincharge, @dateadded)"
                         comm = New MySqlCommand(query, MySQLConn)
                         comm.Parameters.AddWithValue("equipmentname", txt_equip_name.Text)
                         comm.Parameters.AddWithValue("equipmentnumber", txt_equip_no.Text)
@@ -590,6 +590,10 @@ Public Class Frm_EquipmentManagement
 
     End Sub
 
+    Private Sub Frm_EquipmentManagement_FormClosing(sender As Object, e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
+        btn_mlclose_Click()
+    End Sub
+
     Private Sub Equipmentmanagement_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         DateTimePicker1.Text = Date.Now
         Load_Table()
@@ -738,7 +742,7 @@ Public Class Frm_EquipmentManagement
         serv_card_eq.Show()
     End Sub
 
-    Private Sub btn_mlclose_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btn_mlclose.Click
+    Private Sub btn_mlclose_Click() Handles btn_mlclose.Click
         If editmode = True Then
             Dim ans As Integer
             ans = MsgBox("You are currently in the Device Add or Edit Mode, are you sure  you want to exit now? Clicking YES will discard all unsaved changes.", MsgBoxStyle.YesNo, "Exiting...")
@@ -747,13 +751,14 @@ Public Class Frm_EquipmentManagement
                 Me.Dispose()
                 Frm_Main.dbdataset.Clear()
                 Frm_Main.load_table()
+                editmode = False
             End If
         Else
             Me.Dispose()
             Frm_Main.dbdataset.Clear()
             Frm_Main.load_table()
         End If
-        
+
 
     End Sub
 
