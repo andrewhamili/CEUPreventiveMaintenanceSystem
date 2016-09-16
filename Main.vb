@@ -223,23 +223,26 @@ Public Class Frm_Main
 
     Private Sub ComboBox1_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ComboBox1.SelectedIndexChanged
 
-        If TextBox1.Focused = True Then
-            TextBox2.Text = ""
-            TextBox3.Text = ""
-        ElseIf TextBox2.Focused = True Then
-            TextBox1.Text = ""
-            TextBox3.Text = ""
-        ElseIf TextBox3.Focused = True Then
-            TextBox1.Text = ""
-            TextBox2.Text = ""
-        Else
-            TextBox1.Text = ""
-            TextBox2.Text = ""
-            TextBox3.Text = ""
-        End If
+        'If TextBox1.Focused = True Then
+        '    TextBox2.Text = ""
+        '    TextBox3.Text = ""
+        'ElseIf TextBox2.Focused = True Then
+        '    TextBox1.Text = ""
+        '    TextBox3.Text = ""
+        'ElseIf TextBox3.Focused = True Then
+        '    TextBox1.Text = ""
+        '    TextBox2.Text = ""
+        'Else
+        '    TextBox1.Text = ""
+        '    TextBox2.Text = ""
+        '    TextBox3.Text = ""
+        'End If
 
+        'Dim dv As New DataView(dbdataset)
+        'dv.RowFilter = String.Format("Branch  Like '%{0}%'", ComboBox1.Text)
+        'main_datagrid.DataSource = dv
         Dim dv As New DataView(dbdataset)
-        dv.RowFilter = String.Format("Branch  Like '%{0}%'", ComboBox1.Text)
+        dv.RowFilter = String.Format("EquipmentName LIKE '%{0}%' and EquipmentNumber LIKE '%{1}%' and SerialNumber LIKE '%{2}%' and Branch LIKE '%{3}%'", TextBox1.Text, TextBox2.Text, TextBox3.Text, ComboBox1.Text)
         main_datagrid.DataSource = dv
 
     End Sub
