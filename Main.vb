@@ -112,23 +112,27 @@ Public Class Frm_Main
         TextBox1.Text = theText
         TextBox1.Select(SelectionIndex - Change, 0)
 
-        If TextBox2.Focused = True Then
-            TextBox3.Text = ""
-            ComboBox1.Text = ""
-        ElseIf TextBox3.Focused = True Then
-            TextBox2.Text = ""
-            ComboBox1.Text = ""
-        ElseIf ComboBox1.Focused = True Then
-            TextBox2.Text = ""
-            TextBox3.Text = ""
-        Else
-            TextBox2.Text = ""
-            TextBox3.Text = ""
-            ComboBox1.Text = ""
-        End If
+        'If TextBox2.Focused = True Then
+        '    TextBox3.Text = ""
+        '    ComboBox1.Text = ""
+        'ElseIf TextBox3.Focused = True Then
+        '    TextBox2.Text = ""
+        '    ComboBox1.Text = ""
+        'ElseIf ComboBox1.Focused = True Then
+        '    TextBox2.Text = ""
+        '    TextBox3.Text = ""
+        'Else
+        '    TextBox2.Text = ""
+        '    TextBox3.Text = ""
+        '    ComboBox1.Text = ""
+        'End If
 
-        Dim dv As New DataView(dbdataset)
-        dv.RowFilter = String.Format("EquipmentName  Like '%{0}%'", TextBox1.Text)
+        'Dim dv As New DataView(dbdataset)
+        'dv.RowFilter = String.Format("EquipmentName  Like '%{0}%'", TextBox1.Text)
+        'main_datagrid.DataSource = dv
+
+         Dim dv As New DataView(dbdataset)
+        dv.RowFilter = String.Format("EquipmentName LIKE '%{0}%' and EquipmentNumber LIKE '%{1}%' and SerialNumber LIKE '%{2}%' and Branch LIKE '%{3}%'", TextBox1.Text, TextBox2.Text, TextBox3.Text, ComboBox1.Text)
         main_datagrid.DataSource = dv
     End Sub
 
@@ -150,24 +154,28 @@ Public Class Frm_Main
         TextBox2.Text = theText
         TextBox2.Select(SelectionIndex - Change, 0)
 
-        If TextBox1.Focused = True Then
-            TextBox3.Text = ""
-            ComboBox1.Text = ""
-        ElseIf TextBox3.Focused = True Then
-            TextBox1.Text = ""
-            ComboBox1.Text = ""
-        ElseIf ComboBox1.Focused = True Then
-            TextBox1.Text = ""
-            TextBox3.Text = ""
-        Else
+        'If TextBox1.Focused = True Then
+        '    TextBox3.Text = ""
+        '    ComboBox1.Text = ""
+        'ElseIf TextBox3.Focused = True Then
+        '    TextBox1.Text = ""
+        '    ComboBox1.Text = ""
+        'ElseIf ComboBox1.Focused = True Then
+        '    TextBox1.Text = ""
+        '    TextBox3.Text = ""
+        'Else
 
-            TextBox1.Text = ""
-            TextBox3.Text = ""
-            ComboBox1.Text = ""
-        End If
+        '    TextBox1.Text = ""
+        '    TextBox3.Text = ""
+        '    ComboBox1.Text = ""
+        'End If
+
+        'Dim dv As New DataView(dbdataset)
+        'dv.RowFilter = String.Format("EquipmentNumber  Like '%{0}%'", TextBox2.Text)
+        'main_datagrid.DataSource = dv
 
         Dim dv As New DataView(dbdataset)
-        dv.RowFilter = String.Format("EquipmentNumber  Like '%{0}%'", TextBox2.Text)
+        dv.RowFilter = String.Format("EquipmentName LIKE '%{0}%' and EquipmentNumber LIKE '%{1}%' and SerialNumber LIKE '%{2}%' and Branch LIKE '%{3}%'", TextBox1.Text, TextBox2.Text, TextBox3.Text, ComboBox1.Text)
         main_datagrid.DataSource = dv
     End Sub
 
@@ -189,23 +197,27 @@ Public Class Frm_Main
         TextBox3.Text = theText
         TextBox3.Select(SelectionIndex - Change, 0)
 
-        If TextBox1.Focused = True Then
-            TextBox2.Text = ""
-            ComboBox1.Text = ""
-        ElseIf TextBox2.Focused = True Then
-            TextBox1.Text = ""
-            ComboBox1.Text = ""
-        ElseIf ComboBox1.Focused = True Then
-            TextBox1.Text = ""
-            TextBox2.Text = ""
-        Else
-            TextBox1.Text = ""
-            TextBox2.Text = ""
-            ComboBox1.Text = ""
-        End If
+        'If TextBox1.Focused = True Then
+        '    TextBox2.Text = ""
+        '    ComboBox1.Text = ""
+        'ElseIf TextBox2.Focused = True Then
+        '    TextBox1.Text = ""
+        '    ComboBox1.Text = ""
+        'ElseIf ComboBox1.Focused = True Then
+        '    TextBox1.Text = ""
+        '    TextBox2.Text = ""
+        'Else
+        '    TextBox1.Text = ""
+        '    TextBox2.Text = ""
+        '    ComboBox1.Text = ""
+        'End If
+
+        'Dim dv As New DataView(dbdataset)
+        'dv.RowFilter = String.Format("SerialNumber  LIKE'%{0}%'", TextBox3.Text)
+        'main_datagrid.DataSource = dv
 
         Dim dv As New DataView(dbdataset)
-        dv.RowFilter = String.Format("SerialNumber  LIKE'%{0}%'", TextBox3.Text)
+        dv.RowFilter = String.Format("EquipmentName LIKE '%{0}%' and EquipmentNumber LIKE '%{1}%' and SerialNumber LIKE '%{2}%' and Branch LIKE '%{3}%'", TextBox1.Text, TextBox2.Text, TextBox3.Text, ComboBox1.Text)
         main_datagrid.DataSource = dv
     End Sub
 
