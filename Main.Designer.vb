@@ -56,10 +56,12 @@ Partial Class Frm_Main
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.btn_mlminimize = New MetroFramework.Controls.MetroLink()
         Me.lbl_server = New System.Windows.Forms.Label()
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.GroupBox1.SuspendLayout()
         CType(Me.main_datagrid, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox3.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'MetroLabel1
@@ -355,6 +357,16 @@ Partial Class Frm_Main
         Me.lbl_server.TabIndex = 42
         Me.lbl_server.Text = "lbl_server"
         '
+        'PictureBox2
+        '
+        Me.PictureBox2.Image = Global.CEUPreventiveMaintenanceSystem.My.Resources.Resources.info
+        Me.PictureBox2.Location = New System.Drawing.Point(1192, 8)
+        Me.PictureBox2.Name = "PictureBox2"
+        Me.PictureBox2.Size = New System.Drawing.Size(74, 50)
+        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox2.TabIndex = 43
+        Me.PictureBox2.TabStop = False
+        '
         'Frm_Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -362,6 +374,7 @@ Partial Class Frm_Main
         Me.BorderStyle = MetroFramework.Forms.MetroFormBorderStyle.FixedSingle
         Me.ClientSize = New System.Drawing.Size(1318, 629)
         Me.ControlBox = False
+        Me.Controls.Add(Me.PictureBox2)
         Me.Controls.Add(Me.lbl_server)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.btn_mlminimize)
@@ -384,6 +397,7 @@ Partial Class Frm_Main
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -418,4 +432,5 @@ Partial Class Frm_Main
     Private WithEvents btn_activitylog As MetroFramework.Controls.MetroButton
     Private WithEvents MetroLabel7 As MetroFramework.Controls.MetroLabel
     Friend WithEvents lbl_server As System.Windows.Forms.Label
+    Friend WithEvents PictureBox2 As System.Windows.Forms.PictureBox
 End Class

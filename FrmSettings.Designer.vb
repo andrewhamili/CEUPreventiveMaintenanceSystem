@@ -64,7 +64,7 @@ Partial Class FrmSettings
         Me.MetroLabel5.AutoSize = True
         Me.MetroLabel5.Location = New System.Drawing.Point(27, 148)
         Me.MetroLabel5.Name = "MetroLabel5"
-        Me.MetroLabel5.Size = New System.Drawing.Size(67, 19)
+        Me.MetroLabel5.Size = New System.Drawing.Size(66, 19)
         Me.MetroLabel5.TabIndex = 21
         Me.MetroLabel5.Text = "&Password:"
         '
@@ -216,7 +216,7 @@ Partial Class FrmSettings
         Me.MetroLabel1.AutoSize = True
         Me.MetroLabel1.Location = New System.Drawing.Point(42, 30)
         Me.MetroLabel1.Name = "MetroLabel1"
-        Me.MetroLabel1.Size = New System.Drawing.Size(49, 19)
+        Me.MetroLabel1.Size = New System.Drawing.Size(51, 19)
         Me.MetroLabel1.TabIndex = 17
         Me.MetroLabel1.Text = "&Server:"
         '
@@ -253,7 +253,6 @@ Partial Class FrmSettings
         '
         Me.MetroButton1.Location = New System.Drawing.Point(230, 256)
         Me.MetroButton1.Name = "MetroButton1"
-        Me.MetroButton1.Size = New System.Drawing.Size(75, 23)
         Me.MetroButton1.TabIndex = 16
         Me.MetroButton1.Text = "Continue"
         Me.MetroButton1.UseSelectable = True
@@ -299,17 +298,17 @@ Partial Class FrmSettings
     End Sub
 
     Friend WithEvents GroupBox1 As GroupBox
-    Friend WithEvents MetroLabel5 As MetroFramework.Controls.MetroLabel
-    Friend WithEvents tf_setpassword As MetroFramework.Controls.MetroTextBox
-    Friend WithEvents MetroLabel4 As MetroFramework.Controls.MetroLabel
-    Friend WithEvents tf_setusername As MetroFramework.Controls.MetroTextBox
-    Friend WithEvents MetroLabel3 As MetroFramework.Controls.MetroLabel
-    Friend WithEvents tf_setport As MetroFramework.Controls.MetroTextBox
-    Friend WithEvents MetroLabel2 As MetroFramework.Controls.MetroLabel
-    Friend WithEvents tf_setdatabase As MetroFramework.Controls.MetroTextBox
-    Friend WithEvents MetroLabel1 As MetroFramework.Controls.MetroLabel
-    Friend WithEvents tf_setserver As MetroFramework.Controls.MetroTextBox
-    Friend WithEvents MetroButton1 As MetroFramework.Controls.MetroButton
-    Friend WithEvents btn_savedbsettings As MetroFramework.Controls.MetroButton
-    Friend WithEvents btn_mlclose As MetroFramework.Controls.MetroLink
+    Private WithEvents MetroLabel5 As MetroFramework.Controls.MetroLabel
+    Private WithEvents tf_setpassword As MetroFramework.Controls.MetroTextBox
+    Private WithEvents MetroLabel4 As MetroFramework.Controls.MetroLabel
+    Private WithEvents tf_setusername As MetroFramework.Controls.MetroTextBox
+    Private WithEvents MetroLabel3 As MetroFramework.Controls.MetroLabel
+    Private WithEvents tf_setport As MetroFramework.Controls.MetroTextBox
+    Private WithEvents MetroLabel2 As MetroFramework.Controls.MetroLabel
+    Private WithEvents tf_setdatabase As MetroFramework.Controls.MetroTextBox
+    Private WithEvents MetroLabel1 As MetroFramework.Controls.MetroLabel
+    Private WithEvents tf_setserver As MetroFramework.Controls.MetroTextBox
+    Private WithEvents MetroButton1 As MetroFramework.Controls.MetroButton
+    Private WithEvents btn_savedbsettings As MetroFramework.Controls.MetroButton
+    Private WithEvents btn_mlclose As MetroFramework.Controls.MetroLink
 End Class

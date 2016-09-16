@@ -2,7 +2,7 @@
 
 Module GlobalVariableModule1
     Public MySQLConn As New MySqlConnection
-    Public connstring As String = "server=" & My.Settings.Server & " ;userid=" & My.Settings.Username & ";Password=" & My.Settings.Password & ";database=" & My.Settings.Database & ""
+    Public connstring As String = "server=" & My.Settings.Server & ";port=" & My.Settings.Port & ";userid=" & Actions.ToInsecureString(Actions.DecryptString(My.Settings.Username)) & ";password=" & Actions.ToInsecureString(Actions.DecryptString(My.Settings.Password)) & ";database=" & My.Settings.Database
     Public comm As MySqlCommand
     Public reader As MySqlDataReader
     Public adapter As New MySqlDataAdapter
@@ -22,6 +22,8 @@ Module GlobalVariableModule1
     Public tempbranch As String
     Public tempmaintenancesched As String
     Public temppersonincharge As String
+
+    Public systemversion As Integer = 1000
 
 
 End Module

@@ -34,7 +34,7 @@ Public Class Frm_Main
         MetroLabel1.Text = "Welcome, " & activeuserfname & " " & activeuserlname & "!"
         load_table()
         lbl_server.Text = "Server: " + My.Settings.Server
-
+        About.btn_CheckUpdate_Click()
     End Sub
 
     Private Sub btn_mlclose_Click(ByVal sender As Object, ByVal e As EventArgs)
@@ -290,5 +290,9 @@ Public Class Frm_Main
 
     Private Sub btn_activitylog_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_activitylog.Click
         ActivityLog.ShowDialog()
+    End Sub
+
+    Private Sub PictureBox2_Click(sender As System.Object, e As System.EventArgs) Handles PictureBox2.Click
+        About.ShowDialog()
     End Sub
 End Class

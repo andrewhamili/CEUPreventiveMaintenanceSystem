@@ -8,16 +8,18 @@ Public Class FrmSettings
         tf_setserver.Text = My.Settings.Server
         tf_setdatabase.Text = My.Settings.Database
         tf_setport.Text = My.Settings.Port
-        tf_setusername.Text = My.Settings.Username
-        tf_setpassword.Text = My.Settings.Password
     End Sub
 
     Public Sub savesettings()
         My.Settings.Server = tf_setserver.Text
         My.Settings.Database = tf_setdatabase.Text
         My.Settings.Port = tf_setport.Text
-        My.Settings.Username = tf_setusername.Text
-        My.Settings.Password = tf_setpassword.Text
+        If String.IsNullOrEmpty(tf_setusername.Text) And String.IsNullOrEmpty(tf_setpassword.Text) Then
+            'NO ACTION
+        Else
+            My.Settings.Username = Actions.EncryptString(Actions.ToSecureString(tf_setusername.Text))
+            My.Settings.Password = Actions.EncryptString(Actions.ToSecureString(tf_setpassword.Text))
+        End If
         My.Settings.Save()
     End Sub
 
@@ -27,7 +29,6 @@ Public Class FrmSettings
     End Sub
 
     Private Sub MetroButton1_Click(sender As Object, e As EventArgs) Handles MetroButton1.Click
-        savesettings()
         Frm_Login.Show()
         Me.Hide()
     End Sub

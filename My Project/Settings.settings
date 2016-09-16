@@ -17,13 +17,8 @@
     <Setting Name="Password" Type="System.String" Scope="User">
       <Value Profile="(Default)">password</Value>
     </Setting>
-    <Setting Name="ceutltdprevmaintenanceConnectionString" Type="(Connection string)" Scope="Application">
-      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
-&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;ConnectionString&gt;server=localhost;user id=root;database=ceutltdprevmaintenance&lt;/ConnectionString&gt;
-  &lt;ProviderName&gt;MySql.Data.MySqlClient&lt;/ProviderName&gt;
-&lt;/SerializableConnectionString&gt;</DesignTimeValue>
-      <Value Profile="(Default)">server=localhost;user id=root;database=ceutltdprevmaintenance</Value>
+    <Setting Name="SystemVersion" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1000</Value>
     </Setting>
   </Settings>
 </SettingsFile>
