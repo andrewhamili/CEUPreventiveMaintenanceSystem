@@ -160,17 +160,17 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GlobalVariableModule1.vb" />
-    <Compile Include="Main.Designer.vb">
-      <DependentUpon>Main.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Main.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Login.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Login.Designer.vb">
       <DependentUpon>Login.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main.Designer.vb">
+      <DependentUpon>Main.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Main.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MaintenanceStaffPrinting.Designer.vb">

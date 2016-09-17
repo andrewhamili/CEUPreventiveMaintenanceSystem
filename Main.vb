@@ -1,5 +1,6 @@
 ﻿Imports MySql.Data.MySqlClient
 Imports MetroFramework
+Imports System.IO
 
 
 
@@ -32,6 +33,16 @@ Public Class Frm_Main
 
     Private Sub Frm_Main_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         MetroLabel1.Text = "Welcome, " & activeuserfname & " " & activeuserlname & "!"
+
+        Dim UpdateInstaller As New FileInfo("setup.exe")
+        Dim UpdateArchive As New FileInfo("update.exe")
+        If UpdateInstaller.Exists Then
+            UpdateInstaller.Delete()
+        End If
+        If UpdateArchive.Exists Then
+            UpdateArchive.Delete()
+        End If
+
         load_table()
         lbl_server.Text = "Server: " + My.Settings.Server
         About.btn_CheckUpdate_Click()
@@ -131,7 +142,7 @@ Public Class Frm_Main
         'dv.RowFilter = String.Format("EquipmentName  Like '%{0}%'", TextBox1.Text)
         'main_datagrid.DataSource = dv
 
-         Dim dv As New DataView(dbdataset)
+        Dim dv As New DataView(dbdataset)
         dv.RowFilter = String.Format("EquipmentName LIKE '%{0}%' and EquipmentNumber LIKE '%{1}%' and SerialNumber LIKE '%{2}%' and Branch LIKE '%{3}%'", TextBox1.Text, TextBox2.Text, TextBox3.Text, ComboBox1.Text)
         main_datagrid.DataSource = dv
     End Sub
