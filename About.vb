@@ -29,7 +29,7 @@ Class About
             If updatestatus > 0 Then
                 updateYN = MsgBox("A new update is available. Do you want to update now?", MsgBoxStyle.YesNo + MsgBoxStyle.Question, "CEU TLTD Preventive Maintenance System")
             Else
-                MsgBox("There are no available4 update for the System as of now.", MsgBoxStyle.Information, "CEU TLTD Preventive Manintenance SYstem")
+                MsgBox("There are no available updates for the System as of now.", MsgBoxStyle.Information, "CEU TLTD Preventive Manintenance SYstem")
             End If
             MySQLConn.Close()
         Catch ex As Exception
@@ -47,6 +47,8 @@ Class About
         End If
         MySQLConn.ConnectionString = connstring
         Dim arrImage() As Byte
+        Dim downloadedversion As String
+        Dim downloadcount As Integer
 
         MySQLConn.ConnectionString = connstring
         Dim query As String
@@ -57,11 +59,20 @@ Class About
             reader = comm.ExecuteReader
             While reader.Read
                 arrImage = reader.Item("file")
+                downloadcount = reader.GetInt32("downloadcount")
+                downloadedversion = reader.GetString("systemversion")
             End While
             File.WriteAllBytes(Directory.GetCurrentDirectory + "\update.7z", arrImage)
 
             Console.WriteLine(Directory.GetCurrentDirectory)
-
+            MySQLConn.Close()
+            MySQLConn.Open()
+            query = "UPDATE systemupdate set downloadcount=@newcount WHERE systemversion=@version"
+            comm = New MySqlCommand(query, MySQLConn)
+            comm.Parameters.AddWithValue("newcount", downloadcount = downloadcount + 1)
+            comm.Parameters.AddWithValue("version", downloadedversion)
+            reader = comm.ExecuteReader
+            MySQLConn.Close()
         Catch ex As Exception
             MsgBox(ex.Message)
         Finally
@@ -81,6 +92,8 @@ Class About
             update.StartInfo.FileName = "setup.exe"
             update.Start()
             Application.ExitThread()
+        Else
+            MsgBox("The update was not downloaded", MsgBoxStyle.Critical, "CEU TLTD Preventive Maintenance")
         End If
 
 

@@ -12,6 +12,7 @@ Public Class AccountActivity
         If MySQLConn.State = ConnectionState.Open Then
             MySQLConn.Close()
         End If
+        dbdataset.Clear()
         MySQLConn.ConnectionString = connstring
         Dim query As String
         Dim adapter As New MySqlDataAdapter
@@ -49,5 +50,6 @@ Public Class AccountActivity
         Finally
             MySQLConn.Dispose()
         End Try
+        Load_Table()
     End Sub
 End Class

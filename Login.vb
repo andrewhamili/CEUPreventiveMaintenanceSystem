@@ -4,6 +4,7 @@ Imports MetroFramework
 Public Class Frm_Login
 
     Public dbconnectionstatus As Boolean = False
+    Public loginsuccess As Boolean = False
 
     Private Sub MetroButton1_Click(ByVal sender As Object, ByVal e As EventArgs) Handles MetroButton1.Click
 
@@ -39,6 +40,7 @@ Public Class Frm_Login
                 MetroMessageBox.Show(Me, "Welcome " & activeuserfname & " " & activeuserlname & "!", "CEU TLTD Preventive Maintenance System", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Me.Hide()
                 Frm_Main.Show()
+                loginsuccess = True
 
 
             Else
@@ -49,12 +51,14 @@ Public Class Frm_Login
                 txtbox_username.Focus()
             End If
             MySQLConn.Close()
-            MySQLConn.Open()
-            query = "INSERT INTO accountactivity(username) VALUES(@username)"
-            comm = New MySqlCommand(query, MySQLConn)
-            comm.Parameters.AddWithValue("username", username)
-            reader = comm.ExecuteReader
-            MySQLConn.Close()
+            If loginsuccess = True Then
+                MySQLConn.Open()
+                query = "INSERT INTO accountactivity(username) VALUES(@username)"
+                comm = New MySqlCommand(query, MySQLConn)
+                comm.Parameters.AddWithValue("username", username)
+                reader = comm.ExecuteReader
+                MySQLConn.Close()
+            End If
         Catch ex As Exception
             MsgBox("MySql error" & ex.Message)
         Finally

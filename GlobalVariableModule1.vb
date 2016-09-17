@@ -23,7 +23,7 @@ Module GlobalVariableModule1
     Public tempmaintenancesched As String
     Public temppersonincharge As String
 
-    Public systemversion As Integer = 1000
+    Public systemversion As Integer = 1001
 
 
 End Module
