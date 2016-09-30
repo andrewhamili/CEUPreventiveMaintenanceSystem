@@ -68,7 +68,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("ceumiadprevmaintenance")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("ceutltdprevmaintenance")>  _
         Public Property Database() As String
             Get
                 Return CType(Me("Database"),String)
@@ -111,18 +111,6 @@ Namespace My
             End Get
             Set
                 Me("Password") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("1000")>  _
-        Public Property SystemVersion() As Integer
-            Get
-                Return CType(Me("SystemVersion"),Integer)
-            End Get
-            Set
-                Me("SystemVersion") = value
             End Set
         End Property
     End Class

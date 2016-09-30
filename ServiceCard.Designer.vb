@@ -23,6 +23,7 @@ Partial Class ServiceCard
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ServiceCard))
         Me.txt_remarks = New System.Windows.Forms.TextBox()
         Me.equip_N = New MetroFramework.Controls.MetroLabel()
         Me.DateTimePicker = New System.Windows.Forms.DateTimePicker()
@@ -275,6 +276,7 @@ Partial Class ServiceCard
         Me.Controls.Add(Me.txt_repaircost)
         Me.Controls.Add(Me.txt_remarks)
         Me.Font = New System.Drawing.Font("Arial", 12.0!)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "ServiceCard"
         Me.Padding = New System.Windows.Forms.Padding(30, 83, 30, 28)

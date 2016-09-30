@@ -22,6 +22,7 @@ Partial Class PrintMode
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(PrintMode))
         Me.rdio_staff_list = New System.Windows.Forms.RadioButton()
         Me.rdio_equipmentlist = New System.Windows.Forms.RadioButton()
         Me.Button1 = New System.Windows.Forms.Button()
@@ -32,7 +33,7 @@ Partial Class PrintMode
         '
         Me.rdio_staff_list.AutoSize = True
         Me.rdio_staff_list.Location = New System.Drawing.Point(44, 77)
-        Me.rdio_staff_list.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.rdio_staff_list.Margin = New System.Windows.Forms.Padding(4)
         Me.rdio_staff_list.Name = "rdio_staff_list"
         Me.rdio_staff_list.Size = New System.Drawing.Size(305, 22)
         Me.rdio_staff_list.TabIndex = 0
@@ -81,7 +82,8 @@ Partial Class PrintMode
         Me.Controls.Add(Me.rdio_staff_list)
         Me.Font = New System.Drawing.Font("Arial", 12.0!)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "PrintMode"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Choose a page"

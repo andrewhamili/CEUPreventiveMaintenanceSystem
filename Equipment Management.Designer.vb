@@ -61,6 +61,7 @@ Partial Class Frm_EquipmentManagement
         Me.btn_mlclose = New MetroFramework.Controls.MetroLink()
         Me.txt_search_equipmentname = New System.Windows.Forms.TextBox()
         Me.MetroLabel10 = New MetroFramework.Controls.MetroLabel()
+        Me.BackgroundWorker_Loaders = New System.ComponentModel.BackgroundWorker()
         Me.GroupBox1.SuspendLayout()
         CType(Me.disp_data_eq, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -79,7 +80,7 @@ Partial Class Frm_EquipmentManagement
         Me.equip_N.AutoSize = True
         Me.equip_N.Location = New System.Drawing.Point(40, 128)
         Me.equip_N.Name = "equip_N"
-        Me.equip_N.Size = New System.Drawing.Size(128, 19)
+        Me.equip_N.Size = New System.Drawing.Size(129, 19)
         Me.equip_N.TabIndex = 1
         Me.equip_N.Text = "Equipment Number:"
         '
@@ -361,7 +362,7 @@ Partial Class Frm_EquipmentManagement
         Me.MetroLabel8.AutoSize = True
         Me.MetroLabel8.Location = New System.Drawing.Point(121, 309)
         Me.MetroLabel8.Name = "MetroLabel8"
-        Me.MetroLabel8.Size = New System.Drawing.Size(51, 19)
+        Me.MetroLabel8.Size = New System.Drawing.Size(52, 19)
         Me.MetroLabel8.TabIndex = 5
         Me.MetroLabel8.Text = "Owner:"
         '
@@ -379,7 +380,7 @@ Partial Class Frm_EquipmentManagement
         Me.MetroLabel9.AutoSize = True
         Me.MetroLabel9.Location = New System.Drawing.Point(48, 537)
         Me.MetroLabel9.Name = "MetroLabel9"
-        Me.MetroLabel9.Size = New System.Drawing.Size(111, 19)
+        Me.MetroLabel9.Size = New System.Drawing.Size(110, 19)
         Me.MetroLabel9.TabIndex = 8
         Me.MetroLabel9.Text = "Person-in-charge"
         '
@@ -421,6 +422,9 @@ Partial Class Frm_EquipmentManagement
         Me.MetroLabel10.Size = New System.Drawing.Size(158, 19)
         Me.MetroLabel10.TabIndex = 1
         Me.MetroLabel10.Text = "Search Equipment Name:"
+        '
+        'BackgroundWorker_Loaders
+        '
         '
         'Frm_EquipmentManagement
         '
@@ -471,19 +475,7 @@ Partial Class Frm_EquipmentManagement
 
     End Sub
 
-    Friend WithEvents equip_n_l As MetroFramework.Controls.MetroLabel
-    Friend WithEvents equip_N As MetroFramework.Controls.MetroLabel
-    Friend WithEvents MetroLabel1 As MetroFramework.Controls.MetroLabel
-    Friend WithEvents MetroLabel2 As MetroFramework.Controls.MetroLabel
-    Friend WithEvents MetroLabel3 As MetroFramework.Controls.MetroLabel
-    Friend WithEvents MetroLabel4 As MetroFramework.Controls.MetroLabel
-    Friend WithEvents MetroLabel5 As MetroFramework.Controls.MetroLabel
-    Friend WithEvents MetroLabel6 As MetroFramework.Controls.MetroLabel
     Friend WithEvents txt_branch_eq As MetroFramework.Controls.MetroComboBox
-    Friend WithEvents btn_save As MetroFramework.Controls.MetroButton
-    Friend WithEvents btn_add As MetroFramework.Controls.MetroButton
-    Friend WithEvents btn_cancel As MetroFramework.Controls.MetroButton
-    Friend WithEvents btn_clear As MetroFramework.Controls.MetroButton
     Friend WithEvents txt_equip_name As TextBox
     Friend WithEvents txt_equip_no As TextBox
     Friend WithEvents txt_dev_model As TextBox
@@ -492,17 +484,30 @@ Partial Class Frm_EquipmentManagement
     Friend WithEvents txt_date_eq As System.Windows.Forms.DateTimePicker
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents disp_data_eq As MetroFramework.Controls.MetroGrid
-    Friend WithEvents btn_delete As MetroFramework.Controls.MetroButton
-    Friend WithEvents btn_save2 As MetroFramework.Controls.MetroButton
-    Friend WithEvents btn_mlclose As MetroFramework.Controls.MetroLink
     Friend WithEvents DateTimePicker1 As System.Windows.Forms.DateTimePicker
     Friend WithEvents txt_price_eq As System.Windows.Forms.TextBox
-    Friend WithEvents MetroLabel7 As MetroFramework.Controls.MetroLabel
     Friend WithEvents txt_maintenance_sched As MetroFramework.Controls.MetroComboBox
-    Friend WithEvents MetroLabel8 As MetroFramework.Controls.MetroLabel
     Friend WithEvents txt_owner As System.Windows.Forms.TextBox
-    Friend WithEvents MetroLabel9 As MetroFramework.Controls.MetroLabel
     Friend WithEvents txt_personincharge As MetroFramework.Controls.MetroComboBox
     Friend WithEvents txt_search_equipmentname As System.Windows.Forms.TextBox
-    Friend WithEvents MetroLabel10 As MetroFramework.Controls.MetroLabel
+    Friend WithEvents BackgroundWorker_Loaders As System.ComponentModel.BackgroundWorker
+    Private WithEvents equip_n_l As MetroFramework.Controls.MetroLabel
+    Private WithEvents equip_N As MetroFramework.Controls.MetroLabel
+    Private WithEvents MetroLabel1 As MetroFramework.Controls.MetroLabel
+    Private WithEvents MetroLabel2 As MetroFramework.Controls.MetroLabel
+    Private WithEvents MetroLabel3 As MetroFramework.Controls.MetroLabel
+    Private WithEvents MetroLabel4 As MetroFramework.Controls.MetroLabel
+    Private WithEvents MetroLabel5 As MetroFramework.Controls.MetroLabel
+    Private WithEvents MetroLabel6 As MetroFramework.Controls.MetroLabel
+    Private WithEvents btn_save As MetroFramework.Controls.MetroButton
+    Private WithEvents btn_add As MetroFramework.Controls.MetroButton
+    Private WithEvents btn_cancel As MetroFramework.Controls.MetroButton
+    Private WithEvents btn_clear As MetroFramework.Controls.MetroButton
+    Private WithEvents btn_delete As MetroFramework.Controls.MetroButton
+    Private WithEvents btn_save2 As MetroFramework.Controls.MetroButton
+    Private WithEvents btn_mlclose As MetroFramework.Controls.MetroLink
+    Private WithEvents MetroLabel7 As MetroFramework.Controls.MetroLabel
+    Private WithEvents MetroLabel8 As MetroFramework.Controls.MetroLabel
+    Private WithEvents MetroLabel9 As MetroFramework.Controls.MetroLabel
+    Private WithEvents MetroLabel10 As MetroFramework.Controls.MetroLabel
 End Class

@@ -1,5 +1,6 @@
 ﻿Imports MySql.Data.MySqlClient
 Imports MetroFramework
+Imports System.Threading
 
 Public Class Frm_Login
 
@@ -74,6 +75,9 @@ Public Class Frm_Login
     End Sub
 
     Private Sub Frm_Login_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        If MySQLConn.State = ConnectionState.Open Then
+            MySQLConn.Close()
+        End If
 
         AcceptButton = MetroButton1
         CancelButton = MetroButton2

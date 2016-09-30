@@ -82,6 +82,8 @@ Public Class Device
         Me.Dispose()
         Frm_Main.ShowInTaskbar = True
         Frm_Main.Focus()
+        Frm_Main.TopMost = True
+        Frm_Main.TopMost = False
     End Sub
 
     Private Sub PictureBox2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox2.Click

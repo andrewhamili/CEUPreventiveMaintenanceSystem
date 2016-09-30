@@ -16,6 +16,43 @@ Public Class Frm_EquipmentManagement
     Public addevicependingRowCounter As Integer
     Public charactersAllowed As String = " ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890"
     Public editmode As Boolean = False
+    Private Sub Equipmentmanagement_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
+        Control.CheckForIllegalCrossThreadCalls = False
+        Load_EquipmentNames()
+        
+        Load_users()
+        Load_Table()
+        BackgroundWorker_Loaders.RunWorkerAsync()
+
+        DateTimePicker1.Text = Date.Now
+        txt_branch_eq.Text = ""
+        txt_date_eq.Text = ""
+        txt_dev_model.Text = ""
+        txt_equip_name.Text = ""
+        txt_equip_no.Text = ""
+        txt_location.Text = ""
+        txt_owner.Text = ""
+        txt_price_eq.Text = ""
+        txt_serial_no.Text = ""
+        txt_branch_eq.Enabled = False
+        txt_date_eq.Enabled = False
+        txt_dev_model.Enabled = False
+        txt_equip_name.Enabled = False
+        txt_equip_no.Enabled = False
+        txt_location.Enabled = False
+        txt_owner.Enabled = False
+        txt_price_eq.Enabled = False
+        txt_serial_no.Enabled = False
+        txt_maintenance_sched.Enabled = False
+        txt_personincharge.Enabled = False
+
+        btn_save.Hide()
+        btn_save2.Hide()
+        btn_cancel.Hide()
+        btn_clear.Hide()
+        Me.TopMost = True
+        Me.TopMost = False
+    End Sub
 
 
 
@@ -593,42 +630,6 @@ Public Class Frm_EquipmentManagement
     Private Sub Frm_EquipmentManagement_FormClosing(sender As Object, e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
         btn_mlclose_Click()
     End Sub
-
-    Private Sub Equipmentmanagement_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
-        DateTimePicker1.Text = Date.Now
-        Load_Table()
-        Load_users()
-        txt_branch_eq.Text = ""
-        txt_date_eq.Text = ""
-        txt_dev_model.Text = ""
-        txt_equip_name.Text = ""
-        txt_equip_no.Text = ""
-        txt_location.Text = ""
-        txt_owner.Text = ""
-        txt_price_eq.Text = ""
-        txt_serial_no.Text = ""
-
-        txt_branch_eq.Enabled = False
-        txt_date_eq.Enabled = False
-        txt_dev_model.Enabled = False
-        txt_equip_name.Enabled = False
-        txt_equip_no.Enabled = False
-        txt_location.Enabled = False
-        txt_owner.Enabled = False
-        txt_price_eq.Enabled = False
-        txt_serial_no.Enabled = False
-        txt_maintenance_sched.Enabled = False
-        txt_personincharge.Enabled = False
-
-        btn_save.Hide()
-        btn_save2.Hide()
-        btn_cancel.Hide()
-        btn_clear.Hide()
-        Me.TopMost = True
-        Me.TopMost = False
-
-    End Sub
-
     Private Sub btn_delete_Click(sender As System.Object, e As System.EventArgs) Handles btn_delete.Click
 
         If MySQLConn.State = ConnectionState.Open Then
@@ -733,13 +734,6 @@ Public Class Frm_EquipmentManagement
             txt_price_eq.Enabled = False
             txt_serial_no.Enabled = False
         End If
-    End Sub
-
-
-
-    Private Sub btn_serv_eq_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        Me.Hide()
-        serv_card_eq.Show()
     End Sub
 
     Private Sub btn_mlclose_Click() Handles btn_mlclose.Click
@@ -941,5 +935,73 @@ Public Class Frm_EquipmentManagement
         Dim dv As New DataView(dbDataSet)
         dv.RowFilter = String.Format("EquipmentName  Like '%{0}%'", txt_search_equipmentname.Text)
         disp_data_eq.DataSource = dv
+    End Sub
+    Public Sub Load_EquipmentNames()
+        txt_equip_name.AutoCompleteCustomSource.Clear()
+        If MySQLConn.State = ConnectionState.Open Then
+            MySQLConn.Close()
+        End If
+        MySQLConn.ConnectionString = connstring
+        Dim query As String
+        Try
+            MySQLConn.Open()
+            query = "SELECT DISTINCT equipmentname FROM equipmentlist"
+            comm = New MySqlCommand(query, MySQLConn)
+            reader = comm.ExecuteReader
+            While reader.Read
+                txt_equip_name.AutoCompleteCustomSource.Add(reader.GetString("equipmentname"))
+            End While
+            MySQLConn.Close()
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        Finally
+            MySQLConn.Dispose()
+        End Try
+    End Sub
+    Public Sub Load_BrandAndModel()
+        If MySQLConn.State = ConnectionState.Open Then
+            MySQLConn.Close()
+        End If
+        MySQLConn.ConnectionString = connstring
+        Dim query As String
+        Try
+            MySQLConn.Open()
+            query = "SELECT DISTINCT equipmentmodel FROM equipmentlist"
+            comm = New MySqlCommand(query, MySQLConn)
+            reader = comm.ExecuteReader
+            While reader.Read
+                txt_dev_model.AutoCompleteCustomSource.Remove(reader.GetString("equipmentmodel"))
+                txt_dev_model.AutoCompleteCustomSource.Add(reader.GetString("equipmentmodel"))
+            End While
+            MySQLConn.Close()
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        Finally
+            MySQLConn.Dispose()
+        End Try
+    End Sub
+    Public Sub Load_EquipemntLocations()
+        If MySQLConn.State = ConnectionState.Open Then
+            MySQLConn.Close()
+        End If
+        MySQLConn.ConnectionString = connstring
+        Dim query As String
+        Try
+            MySQLConn.Open()
+            query = "SELECT DISTINCT equipmentlocation FROM equipmentlist"
+            comm = New MySqlCommand(query, MySQLConn)
+            reader = comm.ExecuteReader
+            While reader.Read
+                txt_location.AutoCompleteCustomSource.Remove(reader.GetString("equipmentlocation"))
+                txt_location.AutoCompleteCustomSource.Add(reader.GetString("equipmentlocation"))
+            End While
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub BackgroundWorker_Loaders_DoWork(sender As System.Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorker_Loaders.DoWork
+        Load_EquipemntLocations()
+        Load_BrandAndModel()
     End Sub
 End Class

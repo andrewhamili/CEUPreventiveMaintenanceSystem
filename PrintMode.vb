@@ -10,9 +10,14 @@
 
         If rdio_equipmentlist.Checked = True Then
             DevicesPrint.ShowDialog()
+            Me.Dispose()
         Else
             MaintenanceStaffPrinting.ShowDialog()
         End If
-        Me.Dispose()
+
+    End Sub
+
+    Private Sub PrintMode_FormClosing(sender As Object, e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
+        Button2.PerformClick()
     End Sub
 End Class

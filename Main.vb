@@ -1,6 +1,7 @@
 ﻿Imports MySql.Data.MySqlClient
 Imports MetroFramework
 Imports System.IO
+Imports System.Threading
 
 
 
@@ -9,30 +10,11 @@ Public Class Frm_Main
 
     Public dbdataset As New DataTable
     Public charactersAllowed As String = " ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890"
-    Private Sub MetroButton1_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btn_accountmanagement.Click
-        If usertype = "Administrator" Then
-            Frm_Accounts.ShowDialog()
-        Else
-            MetroMessageBox.Show(Me, "You do not have the privilege to manage the User Accounts!", "CEU TLTD Preventive Maintenance System", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-        End If
-
-    End Sub
-
-
-    Private Sub MetroButton4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MetroButton4.Click
-        Me.TopMost = False
-        Dim a As Integer
-        a = MetroMessageBox.Show(Me, "Are you sure you want to exit?", "CEU TLTD Preventive Maintenance System", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
-        If a = 6 Then
-            Me.Dispose()
-            Dim form As New Frm_Login
-            form.Show()
-            form.Focus()
-        End If
-    End Sub
+    Public MarqueeTextThread As System.Threading.Thread
 
     Private Sub Frm_Main_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         MetroLabel1.Text = "Welcome, " & activeuserfname & " " & activeuserlname & "!"
+        Control.CheckForIllegalCrossThreadCalls = False
 
         Dim UpdateInstaller As New FileInfo("setup.exe")
         Dim UpdateArchive As New FileInfo("update.exe")
@@ -46,6 +28,11 @@ Public Class Frm_Main
         load_table()
         lbl_server.Text = "Server: " + My.Settings.Server
         About.btn_CheckUpdate_Click()
+        'BackgroundWorker_MarqueeText.RunWorkerAsync()
+        'BackgroundWorker_MySQL_ServerOnline.RunWorkerAsync()
+        MarqueeTextThread = New System.Threading.Thread(AddressOf MarqueeText)
+        MarqueeTextThread.Start()
+
     End Sub
 
     Private Sub btn_mlclose_Click(ByVal sender As Object, ByVal e As EventArgs)
@@ -61,7 +48,31 @@ Public Class Frm_Main
 
         End If
     End Sub
+    Private Sub MetroButton1_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btn_accountmanagement.Click
+        If usertype = "Administrator" Then
+            Frm_Accounts.ShowDialog()
+        Else
+            MetroMessageBox.Show(Me, "You do not have the privilege to manage the User Accounts!", "CEU TLTD Preventive Maintenance System", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+        End If
 
+    End Sub
+
+
+    Private Sub MetroButton4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MetroButton4.Click
+        Me.TopMost = False
+        Dim a As Integer
+        a = MetroMessageBox.Show(Me, "Are you sure you want to exit?", "CEU TLTD Preventive Maintenance System", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
+        If a = 6 Then
+            'BackgroundWorker_MarqueeText.CancelAsync()
+            'BackgroundWorker_MySQL_ServerOnline.CancelAsync()
+            MarqueeTextThread.Abort()
+            Me.Dispose()
+            Dim form As New Frm_Login
+
+            form.Show()
+            form.Focus()
+        End If
+    End Sub
     Private Sub btn_mlminimize_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btn_mlminimize.Click
         Me.WindowState = FormWindowState.Minimized
     End Sub
@@ -300,10 +311,22 @@ Public Class Frm_Main
     End Sub
 
     Private Sub btn_activitylog_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_activitylog.Click
-        ActivityLog.ShowDialog()
+        ActivityLog.Show()
     End Sub
 
     Private Sub PictureBox2_Click(sender As System.Object, e As System.EventArgs) Handles PictureBox2.Click
         About.ShowDialog()
+    End Sub
+    Private Sub MarqueeText()
+        Do
+            Dim a As Integer = 1290
+            Label_MarqueeDevelopers.Location = New Point(a, 611)
+            Do Until a = -1300 Or Me.IsDisposed
+
+                Label_MarqueeDevelopers.Location = New Point(a, 611)
+                a -= 1
+                Thread.Sleep(5)
+            Loop
+        Loop
     End Sub
 End Class

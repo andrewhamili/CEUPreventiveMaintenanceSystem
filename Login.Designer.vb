@@ -22,16 +22,15 @@ Partial Class Frm_Login
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Frm_Login))
         Me.txtbox_username = New System.Windows.Forms.TextBox()
-        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.txtbox_password = New System.Windows.Forms.TextBox()
         Me.MetroLabel1 = New MetroFramework.Controls.MetroLabel()
         Me.MetroLabel2 = New MetroFramework.Controls.MetroLabel()
         Me.MetroButton1 = New MetroFramework.Controls.MetroButton()
         Me.MetroButton2 = New MetroFramework.Controls.MetroButton()
         Me.lbl_connectionindicator = New System.Windows.Forms.Label()
+        Me.BackgroundWorker_SystemStatusChecker = New System.ComponentModel.BackgroundWorker()
         Me.SuspendLayout()
         '
         'txtbox_username
@@ -40,11 +39,6 @@ Partial Class Frm_Login
         Me.txtbox_username.Name = "txtbox_username"
         Me.txtbox_username.Size = New System.Drawing.Size(143, 20)
         Me.txtbox_username.TabIndex = 0
-        '
-        'ContextMenuStrip1
-        '
-        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(61, 4)
         '
         'txtbox_password
         '
@@ -69,7 +63,7 @@ Partial Class Frm_Login
         Me.MetroLabel2.AutoSize = True
         Me.MetroLabel2.Location = New System.Drawing.Point(13, 113)
         Me.MetroLabel2.Name = "MetroLabel2"
-        Me.MetroLabel2.Size = New System.Drawing.Size(67, 19)
+        Me.MetroLabel2.Size = New System.Drawing.Size(66, 19)
         Me.MetroLabel2.TabIndex = 4
         Me.MetroLabel2.Text = "Password:"
         '
@@ -123,11 +117,11 @@ Partial Class Frm_Login
     End Sub
 
     Friend WithEvents txtbox_username As TextBox
-    Friend WithEvents ContextMenuStrip1 As ContextMenuStrip
     Friend WithEvents txtbox_password As TextBox
-    Friend WithEvents MetroLabel1 As MetroFramework.Controls.MetroLabel
-    Friend WithEvents MetroLabel2 As MetroFramework.Controls.MetroLabel
-    Friend WithEvents MetroButton1 As MetroFramework.Controls.MetroButton
-    Friend WithEvents MetroButton2 As MetroFramework.Controls.MetroButton
     Friend WithEvents lbl_connectionindicator As System.Windows.Forms.Label
+    Friend WithEvents BackgroundWorker_SystemStatusChecker As System.ComponentModel.BackgroundWorker
+    Private WithEvents MetroLabel1 As MetroFramework.Controls.MetroLabel
+    Private WithEvents MetroLabel2 As MetroFramework.Controls.MetroLabel
+    Private WithEvents MetroButton1 As MetroFramework.Controls.MetroButton
+    Private WithEvents MetroButton2 As MetroFramework.Controls.MetroButton
 End Class

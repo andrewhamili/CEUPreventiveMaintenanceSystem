@@ -272,6 +272,7 @@
                         <RightBorder>
                           <Style>Solid</Style>
                         </RightBorder>
+                        <BackgroundColor>= iif(RowNumber(Nothing) mod 2, "Transparent", "LightGrey")</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -310,6 +311,7 @@
                         <RightBorder>
                           <Style>Solid</Style>
                         </RightBorder>
+                        <BackgroundColor>= iif(RowNumber(Nothing) mod 2, "Transparent", "LightGrey")</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -348,6 +350,7 @@
                         <RightBorder>
                           <Style>Solid</Style>
                         </RightBorder>
+                        <BackgroundColor>= iif(RowNumber(Nothing) mod 2, "Transparent", "LightGrey")</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -386,6 +389,7 @@
                         <RightBorder>
                           <Style>Solid</Style>
                         </RightBorder>
+                        <BackgroundColor>= iif(RowNumber(Nothing) mod 2, "Transparent", "LightGrey")</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -424,6 +428,7 @@
                         <RightBorder>
                           <Style>Solid</Style>
                         </RightBorder>
+                        <BackgroundColor>= iif(RowNumber(Nothing) mod 2, "Transparent", "LightGrey")</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>

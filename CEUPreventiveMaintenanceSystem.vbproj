@@ -73,6 +73,12 @@
     <Reference Include="MetroFramework">
       <HintPath>..\..\#Resources\MetroFramework.dll</HintPath>
     </Reference>
+    <Reference Include="MetroFramework.Design">
+      <HintPath>..\..\..\MetroFrameworkLibraries\MetroFramework.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Fonts">
+      <HintPath>..\..\..\MetroFrameworkLibraries\MetroFramework.Fonts.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.ReportViewer.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\#Resources\Microsoft.ReportViewer.Common.dll</HintPath>
@@ -156,12 +162,6 @@
       <DependentUpon>Equipment Management.vb</DependentUpon>
     </Compile>
     <Compile Include="Equipment Management.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Frm_ServiceCard_Equipment.Designer.vb">
-      <DependentUpon>Frm_ServiceCard_Equipment.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Frm_ServiceCard_Equipment.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GlobalVariableModule1.vb" />
@@ -257,9 +257,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Equipment Management.resx">
       <DependentUpon>Equipment Management.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Frm_ServiceCard_Equipment.resx">
-      <DependentUpon>Frm_ServiceCard_Equipment.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.vb</DependentUpon>

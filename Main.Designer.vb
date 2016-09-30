@@ -57,6 +57,8 @@ Partial Class Frm_Main
         Me.btn_mlminimize = New MetroFramework.Controls.MetroLink()
         Me.lbl_server = New System.Windows.Forms.Label()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
+        Me.Label_MarqueeDevelopers = New System.Windows.Forms.Label()
+        Me.BackgroundWorker_MarqueeText = New System.ComponentModel.BackgroundWorker()
         Me.GroupBox1.SuspendLayout()
         CType(Me.main_datagrid, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox3.SuspendLayout()
@@ -89,7 +91,7 @@ Partial Class Frm_Main
         Me.main_datagrid.AllowUserToAddRows = False
         Me.main_datagrid.AllowUserToDeleteRows = False
         Me.main_datagrid.AllowUserToResizeRows = False
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.LightGray
         Me.main_datagrid.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Me.main_datagrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.main_datagrid.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
@@ -310,7 +312,7 @@ Partial Class Frm_Main
         '
         'btn_activitylog
         '
-        Me.btn_activitylog.Location = New System.Drawing.Point(50, 568)
+        Me.btn_activitylog.Location = New System.Drawing.Point(50, 540)
         Me.btn_activitylog.Name = "btn_activitylog"
         Me.btn_activitylog.Size = New System.Drawing.Size(160, 50)
         Me.btn_activitylog.TabIndex = 14
@@ -367,13 +369,30 @@ Partial Class Frm_Main
         Me.PictureBox2.TabIndex = 43
         Me.PictureBox2.TabStop = False
         '
+        'Label_MarqueeDevelopers
+        '
+        Me.Label_MarqueeDevelopers.AutoSize = True
+        Me.Label_MarqueeDevelopers.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.Label_MarqueeDevelopers.Location = New System.Drawing.Point(1274, 611)
+        Me.Label_MarqueeDevelopers.Name = "Label_MarqueeDevelopers"
+        Me.Label_MarqueeDevelopers.Size = New System.Drawing.Size(1216, 19)
+        Me.Label_MarqueeDevelopers.TabIndex = 44
+        Me.Label_MarqueeDevelopers.Text = "Developers:      Kail Andrew R. Hamili,           Christian Angelo R. Umali,     " & _
+    "      Brenz Paul V. Buenaventura,           Patrick Jenkin C. Wu,           Juni" & _
+    "us Reginald T. Tan"
+        '
+        'BackgroundWorker_MarqueeText
+        '
+        Me.BackgroundWorker_MarqueeText.WorkerSupportsCancellation = True
+        '
         'Frm_Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BorderStyle = MetroFramework.Forms.MetroFormBorderStyle.FixedSingle
-        Me.ClientSize = New System.Drawing.Size(1318, 629)
+        Me.ClientSize = New System.Drawing.Size(1318, 650)
         Me.ControlBox = False
+        Me.Controls.Add(Me.Label_MarqueeDevelopers)
         Me.Controls.Add(Me.PictureBox2)
         Me.Controls.Add(Me.lbl_server)
         Me.Controls.Add(Me.PictureBox1)
@@ -433,4 +452,6 @@ Partial Class Frm_Main
     Private WithEvents MetroLabel7 As MetroFramework.Controls.MetroLabel
     Friend WithEvents lbl_server As System.Windows.Forms.Label
     Friend WithEvents PictureBox2 As System.Windows.Forms.PictureBox
+    Friend WithEvents Label_MarqueeDevelopers As System.Windows.Forms.Label
+    Friend WithEvents BackgroundWorker_MarqueeText As System.ComponentModel.BackgroundWorker
 End Class

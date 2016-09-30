@@ -10,6 +10,7 @@ Public Class MaintenanceStaffPrinting
     Private Sub MaintenanceStaffPrinting_FormClosed(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles Me.FormClosed
         Frm_Main.Show()
         Frm_Main.TopMost = True
+        Frm_Main.TopMost = False
 
     End Sub
 
@@ -17,8 +18,15 @@ Public Class MaintenanceStaffPrinting
         ReportViewer1.LocalReport.ReleaseSandboxAppDomain()
     End Sub
     Private Sub MaintenanceStaffPrinting_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+Input:
+
 
         texts = InputBox("Enter the School Year:", "Preventive Maintenance", "2016")
+        If texts = "" Then
+            MsgBox("The School Year Field cannot be blank!", MsgBoxStyle.Critical, "CEU TLTD Preventive Maintenance")
+            GoTo Input
+        End If
+        PrintMode.Dispose()
         lbl_schoolyear.Text = texts
         Dim schoolyear As New ReportParameter("schoolyear", texts)
         If MySQLConn.State = ConnectionState.Open Then
@@ -48,7 +56,7 @@ Public Class MaintenanceStaffPrinting
             'Me.ReportViewer1.RefreshReport()
             ReportViewer1.SetDisplayMode(DisplayMode.PrintLayout)
             ReportViewer1.ZoomMode = ZoomMode.Percent
-            ReportViewer1.ZoomPercent = 25
+            ReportViewer1.ZoomPercent = 75
             MySQLConn.Close()
             Me.ReportViewer1.RefreshReport()
         Catch ex As Exception
@@ -92,7 +100,7 @@ Public Class MaintenanceStaffPrinting
                 'Me.ReportViewer1.RefreshReport()
                 ReportViewer1.SetDisplayMode(DisplayMode.PrintLayout)
                 ReportViewer1.ZoomMode = ZoomMode.Percent
-                ReportViewer1.ZoomPercent = 25
+                ReportViewer1.ZoomPercent = 75
                 MySQLConn.Close()
                 Me.ReportViewer1.RefreshReport()
             Catch ex As Exception
@@ -131,7 +139,7 @@ Public Class MaintenanceStaffPrinting
                 'Me.ReportViewer1.RefreshReport()
                 ReportViewer1.SetDisplayMode(DisplayMode.PrintLayout)
                 ReportViewer1.ZoomMode = ZoomMode.Percent
-                ReportViewer1.ZoomPercent = 25
+                ReportViewer1.ZoomPercent = 75
                 MySQLConn.Close()
                 Me.ReportViewer1.RefreshReport()
             Catch ex As Exception
@@ -200,7 +208,7 @@ Public Class MaintenanceStaffPrinting
                 'Me.ReportViewer1.RefreshReport()
                 ReportViewer1.SetDisplayMode(DisplayMode.PrintLayout)
                 ReportViewer1.ZoomMode = ZoomMode.Percent
-                ReportViewer1.ZoomPercent = 25
+                ReportViewer1.ZoomPercent = 75
                 MySQLConn.Close()
                 Me.ReportViewer1.RefreshReport()
             Catch ex As Exception
@@ -239,7 +247,7 @@ Public Class MaintenanceStaffPrinting
                 'Me.ReportViewer1.RefreshReport()
                 ReportViewer1.SetDisplayMode(DisplayMode.PrintLayout)
                 ReportViewer1.ZoomMode = ZoomMode.Percent
-                ReportViewer1.ZoomPercent = 25
+                ReportViewer1.ZoomPercent = 75
                 MySQLConn.Close()
                 Me.ReportViewer1.RefreshReport()
             Catch ex As Exception
@@ -280,7 +288,7 @@ Public Class MaintenanceStaffPrinting
             'Me.ReportViewer1.RefreshReport()
             ReportViewer1.SetDisplayMode(DisplayMode.PrintLayout)
             ReportViewer1.ZoomMode = ZoomMode.Percent
-            ReportViewer1.ZoomPercent = 25
+            ReportViewer1.ZoomPercent = 75
             MySQLConn.Close()
             Me.ReportViewer1.RefreshReport()
         Catch ex As Exception

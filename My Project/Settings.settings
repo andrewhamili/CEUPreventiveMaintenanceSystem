@@ -6,7 +6,7 @@
       <Value Profile="(Default)">ipaddress/server-name</Value>
     </Setting>
     <Setting Name="Database" Type="System.String" Scope="User">
-      <Value Profile="(Default)">ceumiadprevmaintenance</Value>
+      <Value Profile="(Default)">ceutltdprevmaintenance</Value>
     </Setting>
     <Setting Name="Port" Type="System.String" Scope="User">
       <Value Profile="(Default)">3306</Value>
@@ -16,9 +16,6 @@
     </Setting>
     <Setting Name="Password" Type="System.String" Scope="User">
       <Value Profile="(Default)">password</Value>
-    </Setting>
-    <Setting Name="SystemVersion" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">1000</Value>
     </Setting>
   </Settings>
 </SettingsFile>
