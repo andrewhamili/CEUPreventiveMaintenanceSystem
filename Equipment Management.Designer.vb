@@ -22,10 +22,11 @@ Partial Class Frm_EquipmentManagement
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Me.components = New System.ComponentModel.Container()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Frm_EquipmentManagement))
         Me.equip_n_l = New MetroFramework.Controls.MetroLabel()
         Me.equip_N = New MetroFramework.Controls.MetroLabel()
@@ -61,7 +62,8 @@ Partial Class Frm_EquipmentManagement
         Me.btn_mlclose = New MetroFramework.Controls.MetroLink()
         Me.txt_search_equipmentname = New System.Windows.Forms.TextBox()
         Me.MetroLabel10 = New MetroFramework.Controls.MetroLabel()
-        Me.BackgroundWorker_Loaders = New System.ComponentModel.BackgroundWorker()
+        Me.ProgressBarLoaders = New System.Windows.Forms.ProgressBar()
+        Me.TimerProgressBarProgress = New System.Windows.Forms.Timer(Me.components)
         Me.GroupBox1.SuspendLayout()
         CType(Me.disp_data_eq, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -255,30 +257,30 @@ Partial Class Frm_EquipmentManagement
         Me.disp_data_eq.AllowUserToAddRows = False
         Me.disp_data_eq.AllowUserToDeleteRows = False
         Me.disp_data_eq.AllowUserToResizeRows = False
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.disp_data_eq.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle5.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.disp_data_eq.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle5
         Me.disp_data_eq.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.disp_data_eq.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.disp_data_eq.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.disp_data_eq.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None
         Me.disp_data_eq.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(174, Byte), Integer), CType(CType(219, Byte), Integer))
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(247, Byte), Integer))
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.disp_data_eq.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(174, Byte), Integer), CType(CType(219, Byte), Integer))
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
+        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(247, Byte), Integer))
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
+        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.disp_data_eq.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle6
         Me.disp_data_eq.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
-        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(136, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(136, Byte), Integer))
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(247, Byte), Integer))
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.disp_data_eq.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle7.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
+        DataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(CType(CType(136, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(136, Byte), Integer))
+        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(247, Byte), Integer))
+        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
+        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.disp_data_eq.DefaultCellStyle = DataGridViewCellStyle7
         Me.disp_data_eq.Dock = System.Windows.Forms.DockStyle.Fill
         Me.disp_data_eq.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.disp_data_eq.EnableHeadersVisualStyles = False
@@ -287,14 +289,14 @@ Partial Class Frm_EquipmentManagement
         Me.disp_data_eq.Location = New System.Drawing.Point(3, 16)
         Me.disp_data_eq.Name = "disp_data_eq"
         Me.disp_data_eq.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(174, Byte), Integer), CType(CType(219, Byte), Integer))
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
-        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(247, Byte), Integer))
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.disp_data_eq.RowHeadersDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(174, Byte), Integer), CType(CType(219, Byte), Integer))
+        DataGridViewCellStyle8.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
+        DataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(247, Byte), Integer))
+        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
+        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.disp_data_eq.RowHeadersDefaultCellStyle = DataGridViewCellStyle8
         Me.disp_data_eq.RowHeadersVisible = False
         Me.disp_data_eq.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
         Me.disp_data_eq.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
@@ -423,7 +425,14 @@ Partial Class Frm_EquipmentManagement
         Me.MetroLabel10.TabIndex = 1
         Me.MetroLabel10.Text = "Search Equipment Name:"
         '
-        'BackgroundWorker_Loaders
+        'ProgressBarLoaders
+        '
+        Me.ProgressBarLoaders.Location = New System.Drawing.Point(449, 632)
+        Me.ProgressBarLoaders.Name = "ProgressBarLoaders"
+        Me.ProgressBarLoaders.Size = New System.Drawing.Size(865, 23)
+        Me.ProgressBarLoaders.TabIndex = 39
+        '
+        'TimerProgressBarProgress
         '
         '
         'Frm_EquipmentManagement
@@ -432,9 +441,10 @@ Partial Class Frm_EquipmentManagement
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1318, 696)
         Me.ControlBox = False
+        Me.Controls.Add(Me.ProgressBarLoaders)
+        Me.Controls.Add(Me.btn_save2)
         Me.Controls.Add(Me.txt_search_equipmentname)
         Me.Controls.Add(Me.btn_mlclose)
-        Me.Controls.Add(Me.btn_save2)
         Me.Controls.Add(Me.btn_delete)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.txt_date_eq)
@@ -490,7 +500,6 @@ Partial Class Frm_EquipmentManagement
     Friend WithEvents txt_owner As System.Windows.Forms.TextBox
     Friend WithEvents txt_personincharge As MetroFramework.Controls.MetroComboBox
     Friend WithEvents txt_search_equipmentname As System.Windows.Forms.TextBox
-    Friend WithEvents BackgroundWorker_Loaders As System.ComponentModel.BackgroundWorker
     Private WithEvents equip_n_l As MetroFramework.Controls.MetroLabel
     Private WithEvents equip_N As MetroFramework.Controls.MetroLabel
     Private WithEvents MetroLabel1 As MetroFramework.Controls.MetroLabel
@@ -510,4 +519,6 @@ Partial Class Frm_EquipmentManagement
     Private WithEvents MetroLabel8 As MetroFramework.Controls.MetroLabel
     Private WithEvents MetroLabel9 As MetroFramework.Controls.MetroLabel
     Private WithEvents MetroLabel10 As MetroFramework.Controls.MetroLabel
+    Friend WithEvents ProgressBarLoaders As System.Windows.Forms.ProgressBar
+    Friend WithEvents TimerProgressBarProgress As System.Windows.Forms.Timer
 End Class

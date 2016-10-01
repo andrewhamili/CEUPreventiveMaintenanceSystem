@@ -71,7 +71,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MetroFramework">
-      <HintPath>..\..\#Resources\MetroFramework.dll</HintPath>
+      <HintPath>..\..\..\MetroFrameworkLibraries\MetroFramework.dll</HintPath>
     </Reference>
     <Reference Include="MetroFramework.Design">
       <HintPath>..\..\..\MetroFrameworkLibraries\MetroFramework.Design.dll</HintPath>
@@ -184,6 +184,7 @@
     <Compile Include="MaintenanceStaffPrinting.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Module1.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>

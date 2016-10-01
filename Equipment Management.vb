@@ -16,13 +16,24 @@ Public Class Frm_EquipmentManagement
     Public addevicependingRowCounter As Integer
     Public charactersAllowed As String = " ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890"
     Public editmode As Boolean = False
+    Public LoaderThread As System.Threading.Thread
+    Public HasLoadedAllItems As Boolean = False
+    Public Progress As Integer = 0
     Private Sub Equipmentmanagement_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
+        TimerProgressBarProgress.Enabled = True
         Control.CheckForIllegalCrossThreadCalls = False
+
+        Load_BrandAndModel()
+        Progress = 20
+        Load_EquipemntLocations()
+        Progress = 40
         Load_EquipmentNames()
-        
-        Load_users()
+        Progress = 60
         Load_Table()
-        BackgroundWorker_Loaders.RunWorkerAsync()
+        Progress = 80
+        Load_users()
+        Progress = 100
+
 
         DateTimePicker1.Text = Date.Now
         txt_branch_eq.Text = ""
@@ -164,11 +175,8 @@ Public Class Frm_EquipmentManagement
             bsource.DataSource = dbDataSet
             disp_data_eq.DataSource = bsource
             adapter.Update(dbDataSet)
-
-
-
             MySQLConn.Close()
-
+            txt_search_equipmentname.Text = ""
 
 
 
@@ -214,6 +222,7 @@ Public Class Frm_EquipmentManagement
     End Sub
 
     Private Sub btn_save_Click(sender As System.Object, e As System.EventArgs) Handles btn_save.Click
+
 
         If MySQLConn.State = ConnectionState.Open Then
             MySQLConn.Close()
@@ -277,6 +286,16 @@ Public Class Frm_EquipmentManagement
 
 
                         Load_Table()
+                        Progress = 20
+                        Load_BrandAndModel()
+                        Progress = 40
+                        Load_EquipemntLocations()
+                        Progress = 60
+                        Load_EquipmentNames()
+                        Progress = 80
+                        Load_users()
+                        Progress = 100
+
 
                     End If
 
@@ -550,7 +569,7 @@ Public Class Frm_EquipmentManagement
 
                     reader = comm.ExecuteReader
 
-                    Load_Table()
+
 
 
 
@@ -624,6 +643,16 @@ Public Class Frm_EquipmentManagement
             End Try
 
         End If
+        Load_BrandAndModel()
+        Progress = 20
+        Load_EquipemntLocations()
+        Progress = 40
+        Load_EquipmentNames()
+        Progress = 60
+        Load_Table()
+        Progress = 80
+        Load_users()
+        Progress = 100
 
     End Sub
 
@@ -675,7 +704,16 @@ Public Class Frm_EquipmentManagement
 
             End Try
 
+            Load_BrandAndModel()
+            Progress = 20
+            Load_EquipemntLocations()
+            Progress = 40
+            Load_EquipmentNames()
+            Progress = 60
             Load_Table()
+            Progress = 80
+            Load_users()
+            Progress = 100
 
             btn_cancel.Hide()
             txt_branch_eq.Text = ""
@@ -776,8 +814,10 @@ Public Class Frm_EquipmentManagement
 
         If txt_price_eq.Text.Contains(".") Then
             e.Handled = Not (Char.IsDigit(e.KeyChar))
+            Call MessageBeep(MB_ICONASTERISK)
         Else
             e.Handled = Not (Char.IsDigit(e.KeyChar) Or e.KeyChar = ".")
+
         End If
 
 
@@ -817,7 +857,9 @@ Public Class Frm_EquipmentManagement
                 txt_personincharge.Items.Add(fnamelist + " " + lnamelist)
             End While
         Catch ex As Exception
-
+            MsgBox(ex.Message)
+        Finally
+            MySQLConn.Dispose()
         End Try
 
     End Sub
@@ -953,12 +995,13 @@ Public Class Frm_EquipmentManagement
             End While
             MySQLConn.Close()
         Catch ex As Exception
-            MsgBox(ex.Message)
+            MsgBox("name " & ex.Message)
         Finally
             MySQLConn.Dispose()
         End Try
     End Sub
     Public Sub Load_BrandAndModel()
+        txt_dev_model.AutoCompleteCustomSource.Clear()
         If MySQLConn.State = ConnectionState.Open Then
             MySQLConn.Close()
         End If
@@ -970,17 +1013,17 @@ Public Class Frm_EquipmentManagement
             comm = New MySqlCommand(query, MySQLConn)
             reader = comm.ExecuteReader
             While reader.Read
-                txt_dev_model.AutoCompleteCustomSource.Remove(reader.GetString("equipmentmodel"))
                 txt_dev_model.AutoCompleteCustomSource.Add(reader.GetString("equipmentmodel"))
             End While
             MySQLConn.Close()
         Catch ex As Exception
-            MsgBox(ex.Message)
+            MsgBox("model " & ex.Message)
         Finally
             MySQLConn.Dispose()
         End Try
     End Sub
     Public Sub Load_EquipemntLocations()
+        txt_location.AutoCompleteCustomSource.Clear()
         If MySQLConn.State = ConnectionState.Open Then
             MySQLConn.Close()
         End If
@@ -992,16 +1035,16 @@ Public Class Frm_EquipmentManagement
             comm = New MySqlCommand(query, MySQLConn)
             reader = comm.ExecuteReader
             While reader.Read
-                txt_location.AutoCompleteCustomSource.Remove(reader.GetString("equipmentlocation"))
                 txt_location.AutoCompleteCustomSource.Add(reader.GetString("equipmentlocation"))
             End While
         Catch ex As Exception
-
+            MsgBox("location " & ex.Message)
+        Finally
+            MySQLConn.Dispose()
         End Try
     End Sub
 
-    Private Sub BackgroundWorker_Loaders_DoWork(sender As System.Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorker_Loaders.DoWork
-        Load_EquipemntLocations()
-        Load_BrandAndModel()
+    Private Sub TimerProgressBarProgress_Tick(sender As System.Object, e As System.EventArgs) Handles TimerProgressBarProgress.Tick
+        ProgressBarLoaders.Value = Progress
     End Sub
 End Class
