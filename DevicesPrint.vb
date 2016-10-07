@@ -25,8 +25,6 @@ Public Class DevicesPrint
     End Sub
 
     Private Sub DevicesPrint_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-
-        Control.CheckForIllegalCrossThreadCalls = False
         If MySQLConn.State = ConnectionState.Open Then
             MySQLConn.Close()
         End If
@@ -42,7 +40,7 @@ Public Class DevicesPrint
 
             Dim query As String
 
-            query = "SELECT equipmentnumber, equipmentmodel, equipmentserial, equipmentowner, equipmentlocation, DATE_FORMAT(equipmentdatepurchase, '%m/%d/%Y') AS equipmentdatepurchase, concat('Php.', format(equipmentprice, 2)) AS equipmentprice FROM equipmentlist"
+            query = "SELECT equipmentnumber, equipmentmodel, equipmentserial, equipmentowner, equipmentlocation, DATE_FORMAT(equipmentdatepurchase, '%m/%d/%Y') AS equipmentdatepurchase, concat('Php.', format(equipmentprice, 2)) AS equipmentprice, remarks FROM equipmentlist"
             Dim adapter As New MySqlDataAdapter
             Dim ds As New DataSet1
             DeviceHeader = ""
@@ -63,23 +61,21 @@ Public Class DevicesPrint
             ReportViewer1.ZoomPercent = 75
             MySQLConn.Close()
             Me.ReportViewer1.RefreshReport()
-            BackgroundWorker_LoadEquipmentNames.RunWorkerAsync()
             InitialStatus = True
         Catch ex As Exception
             MsgBox(ex.Message)
         Finally
             MySQLConn.Dispose()
         End Try
-
+        RemoveHandler ComboBoxDevicesPrintFilter.SelectedIndexChanged, AddressOf ComboBoxDevicesPrintFilter_SelectedIndexChanged
+        Load_equipmentnames()
+        AddHandler ComboBoxDevicesPrintFilter.SelectedIndexChanged, AddressOf ComboBoxDevicesPrintFilter_SelectedIndexChanged
     End Sub
-
-   
     Private Sub ComboBoxDevicesPrintFilter_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ComboBoxDevicesPrintFilter.SelectedIndexChanged
         If InitialStatus = True Then
             If MySQLConn.State = ConnectionState.Open Then
                 MySQLConn.Close()
             End If
-
             If ComboBoxDevicesPrintFilter.Text = "All" Then
 
                 MySQLConn.ConnectionString = connstring
@@ -93,7 +89,7 @@ Public Class DevicesPrint
 
                     Dim query As String
 
-                    query = "SELECT equipmentnumber, equipmentmodel, equipmentserial, equipmentowner, equipmentlocation, DATE_FORMAT(equipmentdatepurchase, '%m/%d/%Y') AS equipmentdatepurchase, concat('Php.', format(equipmentprice, 2)) AS equipmentprice FROM equipmentlist"
+                    query = "SELECT equipmentnumber, equipmentmodel, equipmentserial, equipmentowner, equipmentlocation, DATE_FORMAT(equipmentdatepurchase, '%m/%d/%Y') AS equipmentdatepurchase, concat('Php.', format(equipmentprice, 2)) AS equipmentprice, remarks FROM equipmentlist"
                     Dim adapter As New MySqlDataAdapter
                     Dim ds As New DataSet1
                     DeviceHeader = ""
@@ -129,7 +125,7 @@ Public Class DevicesPrint
 
                     Dim query As String
 
-                    query = "SELECT equipmentnumber, equipmentmodel, equipmentserial, equipmentowner, equipmentlocation, DATE_FORMAT(equipmentdatepurchase, '%m/%d/%Y') AS equipmentdatepurchase, concat('Php.', format(equipmentprice, 2)) AS equipmentprice FROM equipmentlist where equipmentname=@chosenequipmentname"
+                    query = "SELECT equipmentnumber, equipmentmodel, equipmentserial, equipmentowner, equipmentlocation, DATE_FORMAT(equipmentdatepurchase, '%m/%d/%Y') AS equipmentdatepurchase, concat('Php.', format(equipmentprice, 2)) AS equipmentprice, remarks FROM equipmentlist where equipmentname=@chosenequipmentname"
                     Dim adapter As New MySqlDataAdapter
                     Dim ds As New DataSet1
                     DeviceHeader = ComboBoxDevicesPrintFilter.Text
@@ -184,11 +180,15 @@ Public Class DevicesPrint
         End Try
     End Sub
 
-    Private Sub BackgroundWorker_LoadEquipmentNames_DoWork(sender As System.Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorker_LoadEquipmentNames.DoWork
-        Load_equipmentnames()
+    Private Sub ReportViewer1_RenderingBegin(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles ReportViewer1.RenderingBegin
+        Me.FormBorderStyle = Windows.Forms.FormBorderStyle.None
+        Me.Enabled = False
+        ProgressBar1.Style = ProgressBarStyle.Marquee
     End Sub
 
-    Private Sub BackgroundWorker_LoadEquipmentNames_ProgressChanged(sender As Object, e As System.ComponentModel.ProgressChangedEventArgs) Handles BackgroundWorker_LoadEquipmentNames.ProgressChanged
-        ProgressBar1.Value = e.ProgressPercentage
+    Private Sub ReportViewer1_RenderingComplete(sender As Object, e As Microsoft.Reporting.WinForms.RenderingCompleteEventArgs) Handles ReportViewer1.RenderingComplete
+        Me.FormBorderStyle = Windows.Forms.FormBorderStyle.Sizable
+        Me.Enabled = True
+        ProgressBar1.Style = ProgressBarStyle.Blocks
     End Sub
 End Class

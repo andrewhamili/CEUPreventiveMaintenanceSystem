@@ -22,6 +22,7 @@ Partial Class MaintenanceStaffPrinting
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MaintenanceStaffPrinting))
         Me.ReportViewer1 = New Microsoft.Reporting.WinForms.ReportViewer()
         Me.ComboBoxStaffPrintFilter = New System.Windows.Forms.ComboBox()
@@ -31,6 +32,9 @@ Partial Class MaintenanceStaffPrinting
         Me.Label3 = New System.Windows.Forms.Label()
         Me.ComboBoxStaffNames = New System.Windows.Forms.ComboBox()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.EquipmentListToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ContextMenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'ReportViewer1
@@ -39,7 +43,7 @@ Partial Class MaintenanceStaffPrinting
         Me.ReportViewer1.Location = New System.Drawing.Point(0, 0)
         Me.ReportViewer1.Name = "ReportViewer1"
         Me.ReportViewer1.ShowFindControls = False
-        Me.ReportViewer1.Size = New System.Drawing.Size(1331, 545)
+        Me.ReportViewer1.Size = New System.Drawing.Size(1331, 307)
         Me.ReportViewer1.TabIndex = 0
         '
         'ComboBoxStaffPrintFilter
@@ -47,7 +51,7 @@ Partial Class MaintenanceStaffPrinting
         Me.ComboBoxStaffPrintFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBoxStaffPrintFilter.Font = New System.Drawing.Font("Arial", 10.0!)
         Me.ComboBoxStaffPrintFilter.FormattingEnabled = True
-        Me.ComboBoxStaffPrintFilter.Items.AddRange(New Object() {"All", "Monthly", "Quarterly", "Semi-Annually", "Annually"})
+        Me.ComboBoxStaffPrintFilter.Items.AddRange(New Object() {"Monthly", "Quarterly", "Semi-Annually", "Annually"})
         Me.ComboBoxStaffPrintFilter.Location = New System.Drawing.Point(553, -1)
         Me.ComboBoxStaffPrintFilter.Name = "ComboBoxStaffPrintFilter"
         Me.ComboBoxStaffPrintFilter.Size = New System.Drawing.Size(185, 24)
@@ -102,7 +106,6 @@ Partial Class MaintenanceStaffPrinting
         Me.ComboBoxStaffNames.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBoxStaffNames.Font = New System.Drawing.Font("Arial", 10.0!)
         Me.ComboBoxStaffNames.FormattingEnabled = True
-        Me.ComboBoxStaffNames.Items.AddRange(New Object() {"All"})
         Me.ComboBoxStaffNames.Location = New System.Drawing.Point(1017, 1)
         Me.ComboBoxStaffNames.Name = "ComboBoxStaffNames"
         Me.ComboBoxStaffNames.Size = New System.Drawing.Size(185, 24)
@@ -117,11 +120,24 @@ Partial Class MaintenanceStaffPrinting
         Me.Button1.Text = "Match All"
         Me.Button1.UseVisualStyleBackColor = True
         '
+        'ContextMenuStrip1
+        '
+        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EquipmentListToolStripMenuItem})
+        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(154, 48)
+        '
+        'EquipmentListToolStripMenuItem
+        '
+        Me.EquipmentListToolStripMenuItem.Name = "EquipmentListToolStripMenuItem"
+        Me.EquipmentListToolStripMenuItem.Size = New System.Drawing.Size(153, 22)
+        Me.EquipmentListToolStripMenuItem.Text = "Equipment List"
+        '
         'MaintenanceStaffPrinting
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1331, 545)
+        Me.ClientSize = New System.Drawing.Size(1331, 307)
+        Me.ContextMenuStrip = Me.ContextMenuStrip1
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.ComboBoxStaffNames)
         Me.Controls.Add(Me.ComboBoxStaffPrintFilter)
@@ -136,6 +152,7 @@ Partial Class MaintenanceStaffPrinting
         Me.Name = "MaintenanceStaffPrinting"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "MaintenanceStaffPrinting"
+        Me.ContextMenuStrip1.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -148,4 +165,6 @@ Partial Class MaintenanceStaffPrinting
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents ComboBoxStaffNames As System.Windows.Forms.ComboBox
     Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents ContextMenuStrip1 As System.Windows.Forms.ContextMenuStrip
+    Friend WithEvents EquipmentListToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 End Class

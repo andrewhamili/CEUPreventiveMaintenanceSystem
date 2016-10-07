@@ -46,7 +46,7 @@ Public Class ServiceCard
 
             Try
                 MySQLConn.Open()
-            query = "INSERT INTO maintenance VALUES(@date, @remarks, @servicetype, @prevmaintenance, @cost, @servicedby, @deviceserial);UPDATE equipmentlist set remarks=@remarks WHERE equipmentserial=@deviceserial;"
+            query = "INSERT INTO maintenance VALUES(@date, @remarks, @servicetype, @prevmaintenance, @cost, @servicedby, @deviceserial);UPDATE equipmentlist set remarks=(SELECT remarks FROM maintenance WHERE equipmentserial=@deviceserial ORDER BY date DESC LIMIT 1) WHERE equipmentserial=@deviceserial;"
                 comm = New MySqlCommand(query, MySQLConn)
                 comm.Parameters.AddWithValue("date", Format(CDate(DateTimePicker.Text), "yyyy/MM/dd"))
                 comm.Parameters.AddWithValue("remarks", txt_remarks.Text)
@@ -63,7 +63,8 @@ Public Class ServiceCard
             Finally
                 MySQLConn.Dispose()
             End Try
-            Device.Maintenance_Log()
+        Device.Maintenance_Log()
+        Frm_Main.load_table()
             Me.Dispose()
     End Sub
 

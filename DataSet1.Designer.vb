@@ -674,6 +674,8 @@ Partial Public Class DataSet1
         
         Private columnequipmentprice As Global.System.Data.DataColumn
         
+        Private columnremarks As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
@@ -766,6 +768,14 @@ Partial Public Class DataSet1
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property remarksColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnremarks
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -802,9 +812,9 @@ Partial Public Class DataSet1
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AddDataTable2Row(ByVal equipmentnumber As String, ByVal equipmentmodel As String, ByVal equipmentserial As String, ByVal equipmentlocation As String, ByVal equipmentowner As String, ByVal equipmentdatepurchase As String, ByVal equipmentprice As String) As DataTable2Row
+        Public Overloads Function AddDataTable2Row(ByVal equipmentnumber As String, ByVal equipmentmodel As String, ByVal equipmentserial As String, ByVal equipmentlocation As String, ByVal equipmentowner As String, ByVal equipmentdatepurchase As String, ByVal equipmentprice As String, ByVal remarks As String) As DataTable2Row
             Dim rowDataTable2Row As DataTable2Row = CType(Me.NewRow,DataTable2Row)
-            Dim columnValuesArray() As Object = New Object() {equipmentnumber, equipmentmodel, equipmentserial, equipmentlocation, equipmentowner, equipmentdatepurchase, equipmentprice}
+            Dim columnValuesArray() As Object = New Object() {equipmentnumber, equipmentmodel, equipmentserial, equipmentlocation, equipmentowner, equipmentdatepurchase, equipmentprice, remarks}
             rowDataTable2Row.ItemArray = columnValuesArray
             Me.Rows.Add(rowDataTable2Row)
             Return rowDataTable2Row
@@ -834,6 +844,7 @@ Partial Public Class DataSet1
             Me.columnequipmentowner = MyBase.Columns("equipmentowner")
             Me.columnequipmentdatepurchase = MyBase.Columns("equipmentdatepurchase")
             Me.columnequipmentprice = MyBase.Columns("equipmentprice")
+            Me.columnremarks = MyBase.Columns("remarks")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -853,6 +864,8 @@ Partial Public Class DataSet1
             MyBase.Columns.Add(Me.columnequipmentdatepurchase)
             Me.columnequipmentprice = New Global.System.Data.DataColumn("equipmentprice", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnequipmentprice)
+            Me.columnremarks = New Global.System.Data.DataColumn("remarks", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnremarks)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1546,6 +1559,21 @@ Partial Public Class DataSet1
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property remarks() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableDataTable2.remarksColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'remarks' in table 'DataTable2' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableDataTable2.remarksColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsequipmentnumberNull() As Boolean
             Return Me.IsNull(Me.tableDataTable2.equipmentnumberColumn)
         End Function
@@ -1626,6 +1654,18 @@ Partial Public Class DataSet1
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetequipmentpriceNull()
             Me(Me.tableDataTable2.equipmentpriceColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsremarksNull() As Boolean
+            Return Me.IsNull(Me.tableDataTable2.remarksColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetremarksNull()
+            Me(Me.tableDataTable2.remarksColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     

@@ -81,6 +81,7 @@ Public Class Frm_Main
 
 
         main_datagrid.Columns.Clear()
+        dbdataset.Clear()
         If MySQLConn.State = ConnectionState.Open Then
             MySQLConn.Close()
         End If
@@ -275,7 +276,8 @@ Public Class Frm_Main
 
     Private Sub PictureBox1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox1.Click
         Me.Hide()
-        PrintMode.ShowDialog()
+        MaintenanceStaffPrinting.ShowDialog()
+
     End Sub
 
     Private Sub main_datagrid_CellDoubleClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles main_datagrid.CellDoubleClick

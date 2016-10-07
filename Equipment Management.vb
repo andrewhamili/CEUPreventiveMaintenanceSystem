@@ -814,7 +814,6 @@ Public Class Frm_EquipmentManagement
 
         If txt_price_eq.Text.Contains(".") Then
             e.Handled = Not (Char.IsDigit(e.KeyChar))
-            Call MessageBeep(MB_ICONASTERISK)
         Else
             e.Handled = Not (Char.IsDigit(e.KeyChar) Or e.KeyChar = ".")
 

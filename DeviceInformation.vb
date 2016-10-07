@@ -91,10 +91,6 @@ Public Class Device
         ServiceCardPrint.ShowDialog()
     End Sub
 
-    Private Sub Device_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.LostFocus
-        Me.Focus()
-    End Sub
-
     Private Sub datagrid_logs_CellDoubleClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles datagrid_logs.CellDoubleClick
         If MySQLConn.State = ConnectionState.Open Then
             MySQLConn.Close()
@@ -126,13 +122,30 @@ Public Class Device
                     comm.Parameters.AddWithValue("maintenancedate", servicedate)
                     reader = comm.ExecuteReader
                     MySQLConn.Close()
+
                     MsgBox("The record has been deleted successfully", MsgBoxStyle.Information, "CEU Preventive Maintenance System")
                     Maintenance_Log()
+                    If datagrid_logs.RowCount > 0 Then
+                        MySQLConn.Open()
+                        query = "UPDATE equipmentlist set remarks=(SELECT remarks FROM maintenance WHERE equipmentserial=@deviceserial ORDER BY date DESC LIMIT 1) WHERE equipmentserial=@deviceserial"
+                        comm = New MySqlCommand(query, MySQLConn)
+                        comm.Parameters.AddWithValue("deviceserial", info_equipserialnum.Text)
+                        reader = comm.ExecuteReader
+                        MySQLConn.Close()
+                    Else
+                        MySQLConn.Open()
+                        query = "UPDATE equipmentlist set remarks='Good Condition' WHERE equipmentserial=@deviceserial"
+                        comm = New MySqlCommand(query, MySQLConn)
+                        comm.Parameters.AddWithValue("deviceserial", info_equipserialnum.Text)
+                        reader = comm.ExecuteReader
+                        MySQLConn.Close()
+                    End If
                 Catch ex As Exception
                     MsgBox(ex.Message)
                 End Try
             End If
         End If
+        Frm_Main.load_table()
     End Sub
 
     Private Sub Timer1_Tick(sender As System.Object, e As System.EventArgs) Handles Timer1.Tick

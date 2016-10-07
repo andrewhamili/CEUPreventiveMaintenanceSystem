@@ -27,7 +27,6 @@ Partial Class DevicesPrint
         Me.ComboBoxDevicesPrintFilter = New System.Windows.Forms.ComboBox()
         Me.ReportViewer1 = New Microsoft.Reporting.WinForms.ReportViewer()
         Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
-        Me.BackgroundWorker_LoadEquipmentNames = New System.ComponentModel.BackgroundWorker()
         Me.SuspendLayout()
         '
         'Label1
@@ -63,14 +62,12 @@ Partial Class DevicesPrint
         'ProgressBar1
         '
         Me.ProgressBar1.Location = New System.Drawing.Point(702, 0)
+        Me.ProgressBar1.MarqueeAnimationSpeed = 60
         Me.ProgressBar1.Name = "ProgressBar1"
         Me.ProgressBar1.Size = New System.Drawing.Size(186, 23)
+        Me.ProgressBar1.Step = 1
+        Me.ProgressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee
         Me.ProgressBar1.TabIndex = 3
-        '
-        'BackgroundWorker_LoadEquipmentNames
-        '
-        Me.BackgroundWorker_LoadEquipmentNames.WorkerReportsProgress = True
-        Me.BackgroundWorker_LoadEquipmentNames.WorkerSupportsCancellation = True
         '
         'DevicesPrint
         '
@@ -95,5 +92,4 @@ Partial Class DevicesPrint
     Friend WithEvents ComboBoxDevicesPrintFilter As System.Windows.Forms.ComboBox
     Friend WithEvents ReportViewer1 As Microsoft.Reporting.WinForms.ReportViewer
     Friend WithEvents ProgressBar1 As System.Windows.Forms.ProgressBar
-    Friend WithEvents BackgroundWorker_LoadEquipmentNames As System.ComponentModel.BackgroundWorker
 End Class
