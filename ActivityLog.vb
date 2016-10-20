@@ -19,7 +19,7 @@ Public Class ActivityLog
         Try
 
             MySQLConn.Open()
-            query = "SELECT logdate as Date, logaction as 'Action', deviceserial as 'Equipment Serial', changes as Changes, username, equipmentnumber as 'Equipment Number', equipmentname as 'Equipment Name', equipmentmodel as 'Equipment Brand and Model', equipmentserial as 'Equipment Serial', equipmentlocation as 'Equipment Location', equipmentowner as 'Owner', equipmentdatepurchase as 'Acquisition Date', equipmentprice as Price, equipmentbranch as 'Branch', maintenancesched as 'Maintenance Schedule', personincharge as 'Person-in-charge' from systemlog"
+            query = "SELECT logdate as Date, logaction as 'Action', deviceserial as 'Equipment Serial', changes as Changes, username, equipmentnumber as 'Equipment Number', equipmentname as 'Equipment Name', equipmentmodel as 'Equipment Brand and Model', equipmentserial as 'Equipment Serial', equipmentlocation as 'Equipment Location', equipmentowner as 'Owner', equipmentdatepurchase as 'Acquisition Date', equipmentprice as Price, equipmentbranch as 'Branch', maintenancesched as 'Maintenance Schedule', personincharge as 'Person-in-charge' from systemlog ORDER BY logdate DESC"
             comm = New MySqlCommand(query, MySQLConn)
             adapter.SelectCommand = comm
             adapter.Fill(dbdataset)

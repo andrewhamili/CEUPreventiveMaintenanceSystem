@@ -23,10 +23,10 @@ Partial Class Frm_EquipmentManagement
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Frm_EquipmentManagement))
         Me.equip_n_l = New MetroFramework.Controls.MetroLabel()
         Me.equip_N = New MetroFramework.Controls.MetroLabel()
@@ -64,6 +64,9 @@ Partial Class Frm_EquipmentManagement
         Me.MetroLabel10 = New MetroFramework.Controls.MetroLabel()
         Me.ProgressBarLoaders = New System.Windows.Forms.ProgressBar()
         Me.TimerProgressBarProgress = New System.Windows.Forms.Timer(Me.components)
+        Me.txt_search_equipmentserial = New System.Windows.Forms.TextBox()
+        Me.MetroLabel11 = New MetroFramework.Controls.MetroLabel()
+        Me.Button_Reload_data = New MetroFramework.Controls.MetroButton()
         Me.GroupBox1.SuspendLayout()
         CType(Me.disp_data_eq, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -82,7 +85,7 @@ Partial Class Frm_EquipmentManagement
         Me.equip_N.AutoSize = True
         Me.equip_N.Location = New System.Drawing.Point(40, 128)
         Me.equip_N.Name = "equip_N"
-        Me.equip_N.Size = New System.Drawing.Size(129, 19)
+        Me.equip_N.Size = New System.Drawing.Size(128, 19)
         Me.equip_N.TabIndex = 1
         Me.equip_N.Text = "Equipment Number:"
         '
@@ -257,30 +260,30 @@ Partial Class Frm_EquipmentManagement
         Me.disp_data_eq.AllowUserToAddRows = False
         Me.disp_data_eq.AllowUserToDeleteRows = False
         Me.disp_data_eq.AllowUserToResizeRows = False
-        DataGridViewCellStyle5.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.disp_data_eq.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.disp_data_eq.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Me.disp_data_eq.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.disp_data_eq.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.disp_data_eq.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.disp_data_eq.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None
         Me.disp_data_eq.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(174, Byte), Integer), CType(CType(219, Byte), Integer))
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
-        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(247, Byte), Integer))
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.disp_data_eq.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(174, Byte), Integer), CType(CType(219, Byte), Integer))
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(247, Byte), Integer))
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.disp_data_eq.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.disp_data_eq.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle7.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
-        DataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(CType(CType(136, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(136, Byte), Integer))
-        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(247, Byte), Integer))
-        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
-        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.disp_data_eq.DefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
+        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(136, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(136, Byte), Integer))
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(247, Byte), Integer))
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.disp_data_eq.DefaultCellStyle = DataGridViewCellStyle3
         Me.disp_data_eq.Dock = System.Windows.Forms.DockStyle.Fill
         Me.disp_data_eq.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.disp_data_eq.EnableHeadersVisualStyles = False
@@ -289,14 +292,14 @@ Partial Class Frm_EquipmentManagement
         Me.disp_data_eq.Location = New System.Drawing.Point(3, 16)
         Me.disp_data_eq.Name = "disp_data_eq"
         Me.disp_data_eq.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(174, Byte), Integer), CType(CType(219, Byte), Integer))
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
-        DataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(247, Byte), Integer))
-        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
-        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.disp_data_eq.RowHeadersDefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(174, Byte), Integer), CType(CType(219, Byte), Integer))
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
+        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(247, Byte), Integer))
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.disp_data_eq.RowHeadersDefaultCellStyle = DataGridViewCellStyle4
         Me.disp_data_eq.RowHeadersVisible = False
         Me.disp_data_eq.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
         Me.disp_data_eq.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
@@ -364,7 +367,7 @@ Partial Class Frm_EquipmentManagement
         Me.MetroLabel8.AutoSize = True
         Me.MetroLabel8.Location = New System.Drawing.Point(121, 309)
         Me.MetroLabel8.Name = "MetroLabel8"
-        Me.MetroLabel8.Size = New System.Drawing.Size(52, 19)
+        Me.MetroLabel8.Size = New System.Drawing.Size(51, 19)
         Me.MetroLabel8.TabIndex = 5
         Me.MetroLabel8.Text = "Owner:"
         '
@@ -382,7 +385,7 @@ Partial Class Frm_EquipmentManagement
         Me.MetroLabel9.AutoSize = True
         Me.MetroLabel9.Location = New System.Drawing.Point(48, 537)
         Me.MetroLabel9.Name = "MetroLabel9"
-        Me.MetroLabel9.Size = New System.Drawing.Size(110, 19)
+        Me.MetroLabel9.Size = New System.Drawing.Size(111, 19)
         Me.MetroLabel9.TabIndex = 8
         Me.MetroLabel9.Text = "Person-in-charge"
         '
@@ -411,7 +414,7 @@ Partial Class Frm_EquipmentManagement
         'txt_search_equipmentname
         '
         Me.txt_search_equipmentname.Font = New System.Drawing.Font("Arial", 10.0!)
-        Me.txt_search_equipmentname.Location = New System.Drawing.Point(653, 83)
+        Me.txt_search_equipmentname.Location = New System.Drawing.Point(773, 86)
         Me.txt_search_equipmentname.Name = "txt_search_equipmentname"
         Me.txt_search_equipmentname.Size = New System.Drawing.Size(116, 23)
         Me.txt_search_equipmentname.TabIndex = 38
@@ -419,7 +422,7 @@ Partial Class Frm_EquipmentManagement
         'MetroLabel10
         '
         Me.MetroLabel10.AutoSize = True
-        Me.MetroLabel10.Location = New System.Drawing.Point(489, 86)
+        Me.MetroLabel10.Location = New System.Drawing.Point(609, 90)
         Me.MetroLabel10.Name = "MetroLabel10"
         Me.MetroLabel10.Size = New System.Drawing.Size(158, 19)
         Me.MetroLabel10.TabIndex = 1
@@ -435,12 +438,39 @@ Partial Class Frm_EquipmentManagement
         'TimerProgressBarProgress
         '
         '
+        'txt_search_equipmentserial
+        '
+        Me.txt_search_equipmentserial.Location = New System.Drawing.Point(1055, 89)
+        Me.txt_search_equipmentserial.Name = "txt_search_equipmentserial"
+        Me.txt_search_equipmentserial.Size = New System.Drawing.Size(116, 20)
+        Me.txt_search_equipmentserial.TabIndex = 40
+        '
+        'MetroLabel11
+        '
+        Me.MetroLabel11.AutoSize = True
+        Me.MetroLabel11.Location = New System.Drawing.Point(895, 90)
+        Me.MetroLabel11.Name = "MetroLabel11"
+        Me.MetroLabel11.Size = New System.Drawing.Size(154, 19)
+        Me.MetroLabel11.TabIndex = 1
+        Me.MetroLabel11.Text = "Search Equipment Serial:"
+        '
+        'Button_Reload_data
+        '
+        Me.Button_Reload_data.Location = New System.Drawing.Point(452, 77)
+        Me.Button_Reload_data.Name = "Button_Reload_data"
+        Me.Button_Reload_data.Size = New System.Drawing.Size(86, 29)
+        Me.Button_Reload_data.TabIndex = 41
+        Me.Button_Reload_data.Text = "Reload Data"
+        Me.Button_Reload_data.UseSelectable = True
+        '
         'Frm_EquipmentManagement
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1318, 696)
         Me.ControlBox = False
+        Me.Controls.Add(Me.Button_Reload_data)
+        Me.Controls.Add(Me.txt_search_equipmentserial)
         Me.Controls.Add(Me.ProgressBarLoaders)
         Me.Controls.Add(Me.btn_save2)
         Me.Controls.Add(Me.txt_search_equipmentname)
@@ -471,6 +501,7 @@ Partial Class Frm_EquipmentManagement
         Me.Controls.Add(Me.MetroLabel3)
         Me.Controls.Add(Me.MetroLabel2)
         Me.Controls.Add(Me.MetroLabel1)
+        Me.Controls.Add(Me.MetroLabel11)
         Me.Controls.Add(Me.MetroLabel10)
         Me.Controls.Add(Me.equip_N)
         Me.Controls.Add(Me.equip_n_l)
@@ -521,4 +552,7 @@ Partial Class Frm_EquipmentManagement
     Private WithEvents MetroLabel10 As MetroFramework.Controls.MetroLabel
     Friend WithEvents ProgressBarLoaders As System.Windows.Forms.ProgressBar
     Friend WithEvents TimerProgressBarProgress As System.Windows.Forms.Timer
+    Friend WithEvents txt_search_equipmentserial As System.Windows.Forms.TextBox
+    Private WithEvents MetroLabel11 As MetroFramework.Controls.MetroLabel
+    Private WithEvents Button_Reload_data As MetroFramework.Controls.MetroButton
 End Class

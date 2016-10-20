@@ -65,10 +65,10 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>0.3497in</Width>
+              <Width>0.57887in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.63987in</Width>
+              <Width>1.50445in</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>0.96429in</Width>
@@ -86,7 +86,7 @@
               <Width>1.10271in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.436in</Width>
+              <Width>1.936in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -111,7 +111,9 @@
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox2</rd:DefaultName>
@@ -713,7 +715,7 @@
         </TablixRowHierarchy>
         <DataSetName>DataSet1</DataSetName>
         <Height>0.5in</Height>
-        <Width>6.38544in</Width>
+        <Width>8.97919in</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -732,7 +734,7 @@
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
   </ReportParameters>
-  <Width>6.38544in</Width>
+  <Width>8.97919in</Width>
   <Page>
     <PageHeader>
       <Height>1.72917in</Height>
@@ -758,7 +760,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox15</rd:DefaultName>
-          <Left>2.22583in</Left>
+          <Left>3.63658in</Left>
           <Height>0.25in</Height>
           <Width>2.02083in</Width>
           <Style>
@@ -791,7 +793,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox16</rd:DefaultName>
           <Top>0.25in</Top>
-          <Left>2.52827in</Left>
+          <Left>3.93902in</Left>
           <Height>0.25in</Height>
           <Width>1.35417in</Width>
           <ZIndex>1</ZIndex>
@@ -825,7 +827,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox17</rd:DefaultName>
           <Top>0.5in</Top>
-          <Left>1.38988in</Left>
+          <Left>2.80063in</Left>
           <Height>0.25in</Height>
           <Width>3.85714in</Width>
           <ZIndex>2</ZIndex>
@@ -860,7 +862,7 @@
           </Paragraphs>
           <rd:DefaultName>equipmentname</rd:DefaultName>
           <Top>1.205in</Top>
-          <Left>0.81994in</Left>
+          <Left>2.23069in</Left>
           <Height>0.33333in</Height>
           <Width>4.8125in</Width>
           <ZIndex>3</ZIndex>
@@ -881,6 +883,10 @@
         </Border>
       </Style>
     </PageHeader>
+    <PageHeight>8.5in</PageHeight>
+    <PageWidth>11in</PageWidth>
+    <InteractiveHeight>8.5in</InteractiveHeight>
+    <InteractiveWidth>11in</InteractiveWidth>
     <LeftMargin>1in</LeftMargin>
     <RightMargin>1in</RightMargin>
     <TopMargin>1in</TopMargin>

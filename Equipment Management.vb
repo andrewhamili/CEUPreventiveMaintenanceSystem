@@ -285,7 +285,7 @@ Public Class Frm_EquipmentManagement
 
 
 
-                        Load_Table()
+
                         Progress = 20
                         Load_BrandAndModel()
                         Progress = 40
@@ -552,7 +552,7 @@ Public Class Frm_EquipmentManagement
 
                     MySQLConn.Close()
                     MySQLConn.Open()
-                    query = "UPDATE equipmentlist  SET equipmentnumber=@equipmentnumber, equipmentname=@equipmentname, equipmentmodel=@equipmentmodel, equipmentserial=@equipmentserial, equipmentlocation=@equipmentlocation, equipmentowner=@equipmentowner, equipmentprice=@equipmentprice, equipmentdatepurchase=@equipmentdatepurchase, equipmentbranch=@equipmentbranch personincharge=@personincharge where equipmentserial=@origserial"
+                    query = "UPDATE equipmentlist  SET equipmentnumber=@equipmentnumber, equipmentname=@equipmentname, equipmentmodel=@equipmentmodel, equipmentserial=@equipmentserial, equipmentlocation=@equipmentlocation, equipmentowner=@equipmentowner, equipmentprice=@equipmentprice, equipmentdatepurchase=@equipmentdatepurchase, equipmentbranch=@equipmentbranch, personincharge=@personincharge where equipmentserial=@origserial"
                     comm = New MySqlCommand(query, MySQLConn)
 
                     comm.Parameters.AddWithValue("equipmentname", txt_equip_name.Text)
@@ -649,7 +649,6 @@ Public Class Frm_EquipmentManagement
         Progress = 40
         Load_EquipmentNames()
         Progress = 60
-        Load_Table()
         Progress = 80
         Load_users()
         Progress = 100
@@ -974,7 +973,7 @@ Public Class Frm_EquipmentManagement
         'End If
 
         Dim dv As New DataView(dbDataSet)
-        dv.RowFilter = String.Format("EquipmentName  Like '%{0}%'", txt_search_equipmentname.Text)
+        dv.RowFilter = String.Format("EquipmentName  Like '%{0}%' and SerialNumber Like '%{1}%'", txt_search_equipmentname.Text, txt_search_equipmentserial.Text)
         disp_data_eq.DataSource = dv
     End Sub
     Public Sub Load_EquipmentNames()
@@ -1045,5 +1044,54 @@ Public Class Frm_EquipmentManagement
 
     Private Sub TimerProgressBarProgress_Tick(sender As System.Object, e As System.EventArgs) Handles TimerProgressBarProgress.Tick
         ProgressBarLoaders.Value = Progress
+    End Sub
+
+    Private Sub txt_search_equipmentserial_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txt_search_equipmentserial.TextChanged
+        Dim theText As String = txt_search_equipmentserial.Text
+        Dim Letter As String
+        Dim SelectionIndex As Integer = txt_search_equipmentserial.SelectionStart
+        Dim Change As Integer
+
+        For x As Integer = 0 To txt_search_equipmentserial.Text.Length - 1
+            Letter = txt_search_equipmentserial.Text.Substring(x, 1)
+            If charactersAllowed.Contains(Letter) = False Then
+                theText = theText.Replace(Letter, String.Empty)
+                Change = 1
+            End If
+        Next
+
+        txt_search_equipmentserial.Text = theText
+        txt_search_equipmentserial.Select(SelectionIndex - Change, 0)
+
+        'If TextBox2.Focused = True Then
+        '    TextBox3.Text = ""
+        '    ComboBox1.Text = ""
+        'ElseIf TextBox3.Focused = True Then
+        '    TextBox2.Text = ""
+        '    ComboBox1.Text = ""
+        'ElseIf ComboBox1.Focused = True Then
+        '    TextBox2.Text = ""
+        '    TextBox3.Text = ""
+        'Else
+        '    TextBox2.Text = ""
+        '    TextBox3.Text = ""
+        '    ComboBox1.Text = ""
+        'End If
+
+        Dim dv As New DataView(dbDataSet)
+        dv.RowFilter = String.Format("EquipmentName  Like '%{0}%' and SerialNumber Like '%{1}%'", txt_search_equipmentname.Text, txt_search_equipmentserial.Text)
+        disp_data_eq.DataSource = dv
+    End Sub
+
+    Private Sub Button_Reload_data_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button_Reload_data.Click
+        Progress = 10
+        Cursor = Cursors.WaitCursor
+        Load_Table()
+        Progress = 50
+        Load_users()
+        Progress = 100
+        txt_search_equipmentname.Text = ""
+        txt_search_equipmentserial.Text = ""
+        Cursor = Cursors.Default
     End Sub
 End Class

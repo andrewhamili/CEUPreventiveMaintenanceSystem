@@ -71,7 +71,7 @@ Public Class Frm_Login
     End Sub
 
     Private Sub MetroButton2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MetroButton2.Click
-        End
+        Application.ExitThread()
     End Sub
 
     Private Sub Frm_Login_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
