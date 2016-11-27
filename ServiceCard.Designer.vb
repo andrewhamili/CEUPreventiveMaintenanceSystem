@@ -69,6 +69,7 @@ Partial Class ServiceCard
         '
         'DateTimePicker
         '
+        Me.DateTimePicker.Enabled = False
         Me.DateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom
         Me.DateTimePicker.Location = New System.Drawing.Point(234, 82)
         Me.DateTimePicker.Margin = New System.Windows.Forms.Padding(4)
@@ -138,7 +139,7 @@ Partial Class ServiceCard
         Me.MetroLabel4.Location = New System.Drawing.Point(128, 329)
         Me.MetroLabel4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.MetroLabel4.Name = "MetroLabel4"
-        Me.MetroLabel4.Size = New System.Drawing.Size(99, 25)
+        Me.MetroLabel4.Size = New System.Drawing.Size(98, 25)
         Me.MetroLabel4.TabIndex = 2
         Me.MetroLabel4.Text = "Serviced by"
         '
@@ -195,7 +196,7 @@ Partial Class ServiceCard
         Me.MetroLabel5.Location = New System.Drawing.Point(120, 202)
         Me.MetroLabel5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.MetroLabel5.Name = "MetroLabel5"
-        Me.MetroLabel5.Size = New System.Drawing.Size(105, 25)
+        Me.MetroLabel5.Size = New System.Drawing.Size(106, 25)
         Me.MetroLabel5.TabIndex = 2
         Me.MetroLabel5.Text = "Service Type"
         '
