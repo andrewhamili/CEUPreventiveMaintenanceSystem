@@ -44,7 +44,7 @@ Public Class Frm_Accounts
 
             Dim query As String
 
-            MySQLConn.ConnectionString = connstring
+            MySQLConn.ConnectionString = connstring & database
 
             If tf_password.Text = tf_retypepass.Text Then
                 If tf_fname.Text = "" Or tf_lname.Text = "" Or tf_username.Text = "" Or tf_password.Text = "" Or tf_retypepass.Text = "" Or cb_usertype.Text = "" Then
@@ -106,7 +106,7 @@ Public Class Frm_Accounts
             Dim query As String
 
 
-            MySQLConn.ConnectionString = connstring
+            MySQLConn.ConnectionString = connstring & database
 
             tf_fname.Enabled = False
             tf_mname.Enabled = False
@@ -169,7 +169,7 @@ Public Class Frm_Accounts
 
     Private Sub btn_delete_Click(sender As Object, e As EventArgs) Handles btn_delete.Click
         MySQLConn = New MySqlConnection
-        MySQLConn.ConnectionString = connstring
+        MySQLConn.ConnectionString = connstring & database
 
         Dim a As Integer
 
@@ -246,7 +246,7 @@ Public Class Frm_Accounts
         Dim query As String
 
 
-        MySQLConn.ConnectionString = connstring
+        MySQLConn.ConnectionString = connstring & database
 
         Try
             MySQLConn.Open()
@@ -280,7 +280,7 @@ Public Class Frm_Accounts
         Dim bsource As New BindingSource
         Dim query As String
 
-        MySQLConn.ConnectionString = connstring
+        MySQLConn.ConnectionString = connstring & database
 
         Try
             MySQLConn.Open()

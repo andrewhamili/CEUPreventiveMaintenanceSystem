@@ -160,6 +160,9 @@ Public Class Frm_EquipmentManagement
         If MySQLConn.State = ConnectionState.Open Then
             MySQLConn.Close()
         End If
+
+        MySQLConn.ConnectionString = connstring & database
+
         dbDataSet.Clear()
         Dim adapter As New MySqlDataAdapter
         Dim bsource As New BindingSource
@@ -227,6 +230,9 @@ Public Class Frm_EquipmentManagement
         If MySQLConn.State = ConnectionState.Open Then
             MySQLConn.Close()
         End If
+
+
+        MySQLConn.ConnectionString = connstring & database
 
         Dim query As String
 
@@ -343,7 +349,11 @@ Public Class Frm_EquipmentManagement
         End If
     End Sub
 
-    Private Sub btn_save2_Click(sender As System.Object, e As System.EventArgs) Handles btn_save2.Click
+    Private Sub btn_save2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_save2.Click
+
+        If MySQLConn.State = ConnectionState.Open Then
+            MySQLConn.Close()
+        End If
 
         Dim origserial As String
         Dim query As String
@@ -444,6 +454,8 @@ Public Class Frm_EquipmentManagement
             btn_delete.Enabled = False
 
         ElseIf txt_serial_no.Text = origserial Then
+
+            MySQLConn.ConnectionString = connstring & database
 
             Try
                 MySQLConn.Open()
@@ -606,7 +618,7 @@ Public Class Frm_EquipmentManagement
                         reader = comm.ExecuteReader
                         MySQLConn.Close()
                     End If
-                    
+
 
 
                     txt_branch_eq.Text = ""
@@ -667,7 +679,10 @@ Public Class Frm_EquipmentManagement
         deleteYN = MetroMessageBox.Show(Me, "Are you sure you want to Delete ? ", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
         If deleteYN = MsgBoxResult.Yes Then
             Try
-                MysqlConn.Open()
+
+                MySQLConn.ConnectionString = connstring & database
+
+                MySQLConn.Open()
                 Dim Query As String
                 Query = "DELETE FROM equipmentlist WHERE equipmentserial=@equipmentserial"
                 comm = New MySqlCommand(Query, MySQLConn)
@@ -699,7 +714,7 @@ Public Class Frm_EquipmentManagement
             Catch ex As MySqlException
                 MessageBox.Show(ex.Message)
             Finally
-                MysqlConn.Dispose()
+                MySQLConn.Dispose()
 
             End Try
 
@@ -840,7 +855,7 @@ Public Class Frm_EquipmentManagement
         Dim fnamelist As String
         Dim lnamelist As String
 
-        MySQLConn.ConnectionString = connstring
+        MySQLConn.ConnectionString = connstring & database
         
         Try
             MySQLConn.Open()
@@ -981,7 +996,7 @@ Public Class Frm_EquipmentManagement
         If MySQLConn.State = ConnectionState.Open Then
             MySQLConn.Close()
         End If
-        MySQLConn.ConnectionString = connstring
+        MySQLConn.ConnectionString = connstring & database
         Dim query As String
         Try
             MySQLConn.Open()
@@ -1003,7 +1018,7 @@ Public Class Frm_EquipmentManagement
         If MySQLConn.State = ConnectionState.Open Then
             MySQLConn.Close()
         End If
-        MySQLConn.ConnectionString = connstring
+        MySQLConn.ConnectionString = connstring & database
         Dim query As String
         Try
             MySQLConn.Open()
@@ -1025,7 +1040,7 @@ Public Class Frm_EquipmentManagement
         If MySQLConn.State = ConnectionState.Open Then
             MySQLConn.Close()
         End If
-        MySQLConn.ConnectionString = connstring
+        MySQLConn.ConnectionString = connstring & database
         Dim query As String
         Try
             MySQLConn.Open()

@@ -2,7 +2,8 @@
 
 Module GlobalVariableModule1
     Public MySQLConn As New MySqlConnection
-    Public connstring As String = "server=" & My.Settings.Server & ";port=" & My.Settings.Port & ";userid=" & Actions.ToInsecureString(Actions.DecryptString(My.Settings.Username)) & ";password=" & Actions.ToInsecureString(Actions.DecryptString(My.Settings.Password)) & ";database=" & My.Settings.Database
+    Public connstring As String = "server=" & My.Settings.Server & ";port=" & My.Settings.Port & ";userid=" & Actions.ToInsecureString(Actions.DecryptString(My.Settings.Username)) & ";password=" & Actions.ToInsecureString(Actions.DecryptString(My.Settings.Password)) & ";"
+    Public database As String = "database=ceuprevmaintenance;"
     Public comm As MySqlCommand
     Public reader As MySqlDataReader
     Public adapter As New MySqlDataAdapter

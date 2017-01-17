@@ -11,6 +11,8 @@ Public Class ActivityLog
             MySQLConn.Close()
         End If
 
+        MySQLConn.ConnectionString = connstring & database
+
         Dim adapter As New MySqlDataAdapter
         Dim dbdataset As New DataTable
         Dim bsource As New BindingSource

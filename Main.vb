@@ -86,6 +86,9 @@ Public Class Frm_Main
             MySQLConn.Close()
         End If
 
+
+        MySQLConn.ConnectionString = connstring & database
+
         Dim adapter As New MySqlDataAdapter
         Dim bsource As New BindingSource
         Dim query As String

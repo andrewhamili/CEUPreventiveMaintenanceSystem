@@ -15,7 +15,7 @@ Class About
             MySQLConn.Close()
         End If
         Dim updateYN As DialogResult
-        MySQLConn.ConnectionString = connstring
+        MySQLConn.ConnectionString = connstring & database
         Try
             MySQLConn.Open()
             comm = New MySqlCommand("SELECT * FROM systemupdate ORDER BY systemversion DESC LIMIT 1", MySQLConn)
@@ -45,7 +45,7 @@ Class About
         If MySQLConn.State = ConnectionState.Open Then
             MySQLConn.Close()
         End If
-        MySQLConn.ConnectionString = connstring
+        MySQLConn.ConnectionString = connstring & database
         Dim arrImage() As Byte
         Dim downloadedversion As String
         Dim downloadcount As Integer

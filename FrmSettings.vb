@@ -4,7 +4,8 @@ Imports System.Threading
 
 Public Class FrmSettings
     Private Sub Settings_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
-
+        Me.Dispose()
+        TestConnection()
         AcceptButton = MetroButton1
 
         tf_setserver.Text = My.Settings.Server
@@ -33,7 +34,10 @@ Public Class FrmSettings
     Private Sub MetroButton1_Click(sender As Object, e As EventArgs) Handles MetroButton1.Click
         Try
             Dim SystemOnline As Boolean = True
-            If My.Computer.Network.Ping(My.Settings.Server) Then
+            If My.Settings.Server = "localhost" Then
+                Frm_Login.Show()
+                Me.Hide()
+            ElseIf My.Computer.Network.Ping(My.Settings.Server) Then
                 SystemOnline = True
             Else
                 SystemOnline = False
@@ -45,8 +49,7 @@ Public Class FrmSettings
                     Application.ExitThread()
                 End If
             Else
-                Frm_Login.Show()
-                Me.Hide()
+                TestConnection()
             End If
         Catch ex As Exception
             MsgBox(ex.InnerException.Message)
@@ -72,5 +75,20 @@ Public Class FrmSettings
 
     Private Sub btn_mlminimize_Click(ByVal sender As Object, ByVal e As EventArgs)
         Me.WindowState = FormWindowState.Minimized
+    End Sub
+    Public Sub TestConnection()
+        If MySQLConn.State = ConnectionState.Open Then
+            MySQLConn.Close()
+        End If
+        MySQLConn.ConnectionString = connstring
+        Try
+            MySQLConn.Open()
+            MySQLConn.Close()
+            Frm_Login.Show()
+            Me.Hide()
+        Catch ex As Exception
+            MsgBox("There was a problem connecting to the MySQL Server. Please enter the Correct COnnection Configuration! Contact your Administrator for further assistance", MsgBoxStyle.Critical, "Preventive Maitenance System")
+            Me.Show()
+        End Try
     End Sub
 End Class

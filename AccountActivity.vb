@@ -13,7 +13,7 @@ Public Class AccountActivity
             MySQLConn.Close()
         End If
         dbdataset.Clear()
-        MySQLConn.ConnectionString = connstring
+        MySQLConn.ConnectionString = connstring & database
         Dim query As String
         Dim adapter As New MySqlDataAdapter
         Dim bsource As New BindingSource
@@ -39,7 +39,7 @@ Public Class AccountActivity
         If MySQLConn.State = ConnectionState.Open Then
             MySQLConn.Close()
         End If
-        MySQLConn.ConnectionString = connstring
+        MySQLConn.ConnectionString = connstring & database
         Try
             MySQLConn.Open()
             comm = New MySqlCommand("DELETE FROM accountactivity", MySQLConn)

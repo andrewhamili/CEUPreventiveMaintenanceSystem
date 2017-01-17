@@ -20,7 +20,7 @@ Public Class Frm_Login
         End If
 
         Dim query As String
-        MySQLConn.ConnectionString = connstring
+        MySQLConn.ConnectionString = connstring & database
 
         Try
             MySQLConn.Open()
@@ -79,6 +79,8 @@ Public Class Frm_Login
             MySQLConn.Close()
         End If
 
+
+
         AcceptButton = MetroButton1
         CancelButton = MetroButton2
 
@@ -86,7 +88,7 @@ Public Class Frm_Login
             MySQLConn.Close()
         End If
 
-        MySQLConn.ConnectionString = connstring
+
 
         Try
             MySQLConn.Open()

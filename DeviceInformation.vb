@@ -42,6 +42,9 @@ Public Class Device
         If MySQLConn.State = ConnectionState.Open Then
             MySQLConn.Close()
         End If
+
+        MySQLConn.ConnectionString = connstring & database
+
         Dim query As String
         Dim adapter As New MySqlDataAdapter
         Dim dbdataset As New DataTable
@@ -96,7 +99,7 @@ Public Class Device
             MySQLConn.Close()
         End If
 
-        MySQLConn.ConnectionString = connstring
+        MySQLConn.ConnectionString = connstring & database
 
         If e.RowIndex >= 0 Then
             Dim query As String

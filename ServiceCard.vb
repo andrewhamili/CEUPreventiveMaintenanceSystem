@@ -16,6 +16,8 @@ Public Class ServiceCard
             MySQLConn.Close()
         End If
 
+        MySQLConn.ConnectionString = connstring & database
+
         If CheckBox1.Checked = True Then
             txt_remarks.Text = "CONDEMNED AS OF " & DateTimePicker1.Text & " " & txt_remarks.Text
         End If
