@@ -24,12 +24,12 @@ Partial Class Login
     Private Sub InitializeComponent()
         Me.VisualStudio2012DarkTheme1 = New Telerik.WinControls.Themes.VisualStudio2012DarkTheme()
         Me.txtUsername = New Telerik.WinControls.UI.RadTextBox()
-        Me.RadTextBox1 = New Telerik.WinControls.UI.RadTextBox()
+        Me.txtPassword = New Telerik.WinControls.UI.RadTextBox()
         Me.RadLabel1 = New Telerik.WinControls.UI.RadLabel()
         Me.RadLabel2 = New Telerik.WinControls.UI.RadLabel()
         Me.btnLogin = New Telerik.WinControls.UI.RadButton()
         CType(Me.txtUsername, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadTextBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtPassword, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadLabel1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadLabel2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnLogin, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -45,17 +45,17 @@ Partial Class Login
         Me.txtUsername.TabIndex = 0
         Me.txtUsername.ThemeName = "VisualStudio2012Dark"
         '
-        'RadTextBox1
+        'txtPassword
         '
-        Me.RadTextBox1.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.RadTextBox1.Location = New System.Drawing.Point(190, 180)
-        Me.RadTextBox1.Name = "RadTextBox1"
-        Me.RadTextBox1.NullText = "[password]"
-        Me.RadTextBox1.PasswordChar = Global.Microsoft.VisualBasic.ChrW(9679)
-        Me.RadTextBox1.Size = New System.Drawing.Size(142, 28)
-        Me.RadTextBox1.TabIndex = 1
-        Me.RadTextBox1.ThemeName = "VisualStudio2012Dark"
-        Me.RadTextBox1.UseSystemPasswordChar = True
+        Me.txtPassword.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.txtPassword.Location = New System.Drawing.Point(190, 180)
+        Me.txtPassword.Name = "txtPassword"
+        Me.txtPassword.NullText = "[password]"
+        Me.txtPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(9679)
+        Me.txtPassword.Size = New System.Drawing.Size(142, 28)
+        Me.txtPassword.TabIndex = 1
+        Me.txtPassword.ThemeName = "VisualStudio2012Dark"
+        Me.txtPassword.UseSystemPasswordChar = True
         '
         'RadLabel1
         '
@@ -95,7 +95,7 @@ Partial Class Login
         Me.Controls.Add(Me.btnLogin)
         Me.Controls.Add(Me.RadLabel2)
         Me.Controls.Add(Me.RadLabel1)
-        Me.Controls.Add(Me.RadTextBox1)
+        Me.Controls.Add(Me.txtPassword)
         Me.Controls.Add(Me.txtUsername)
         Me.Font = New System.Drawing.Font("Segoe UI", 12.0!)
         Me.MaximizeBox = False
@@ -105,10 +105,11 @@ Partial Class Login
         '
         '
         Me.RootElement.ApplyShapeToControl = True
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Login"
         Me.ThemeName = "VisualStudio2012Dark"
         CType(Me.txtUsername, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadTextBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtPassword, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RadLabel1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RadLabel2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.btnLogin, System.ComponentModel.ISupportInitialize).EndInit()
@@ -120,7 +121,7 @@ Partial Class Login
 
     Friend WithEvents VisualStudio2012DarkTheme1 As Telerik.WinControls.Themes.VisualStudio2012DarkTheme
     Friend WithEvents txtUsername As Telerik.WinControls.UI.RadTextBox
-    Friend WithEvents RadTextBox1 As Telerik.WinControls.UI.RadTextBox
+    Friend WithEvents txtPassword As Telerik.WinControls.UI.RadTextBox
     Friend WithEvents RadLabel1 As Telerik.WinControls.UI.RadLabel
     Friend WithEvents RadLabel2 As Telerik.WinControls.UI.RadLabel
     Friend WithEvents btnLogin As Telerik.WinControls.UI.RadButton
